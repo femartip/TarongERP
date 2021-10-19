@@ -15,7 +15,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Testing", "Testing", "{1C32
 		Class2.cs = Class2.cs
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassLibrary", "ClassLibrary\ClassLibrary.csproj", "{95930E88-77F2-4D30-B856-40242129B271}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TarongISWLib", "ClassLibrary\TarongISWLib.csproj", "{95930E88-77F2-4D30-B856-40242129B271}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Lab1", "Lab1", "{6283EFA6-C095-478B-80E3-E41A441F1732}"
 EndProject
