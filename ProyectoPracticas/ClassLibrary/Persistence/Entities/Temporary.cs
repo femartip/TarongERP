@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace TarongISW.Persistence.Entities
 {
-    public partial class Temporary
+    public partial class Temporary : Contract
     {
+        public DateTime? FinalDate
+        {
+            get;
+            set;
+        }
     }
 }
