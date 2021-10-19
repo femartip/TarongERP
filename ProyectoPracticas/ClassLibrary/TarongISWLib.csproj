@@ -44,7 +44,15 @@
     <Compile Include="BusinessLogic\Class1.cs" />
     <Compile Include="BusinessLogic\Entities\Class1.cs" />
     <Compile Include="Persistence\Class1.cs" />
-    <Compile Include="Persistence\Entities\Class1.cs" />
+    <Compile Include="Persistence\Entities\Person.cs" />
+    <Compile Include="Persistence\Entities\Contract.cs" />
+    <Compile Include="Persistence\Entities\Permanent.cs" />
+    <Compile Include="Persistence\Entities\Parcel.cs" />
+    <Compile Include="Persistence\Entities\Group.cs" />
+    <Compile Include="Persistence\Entities\Crate.cs" />
+    <Compile Include="Persistence\Entities\Truck.cs" />
+    <Compile Include="Persistence\Entities\Trip.cs" />
+    <Compile Include="Persistence\Entities\Temporary.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
