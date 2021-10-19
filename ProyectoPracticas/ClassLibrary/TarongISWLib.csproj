@@ -42,7 +42,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BusinessLogic\Class1.cs" />
-    <Compile Include="BusinessLogic\Entities\Class1.cs" />
+    <Compile Include="BusinessLogic\Entities\Contract.cs" />
+    <Compile Include="BusinessLogic\Entities\Crate.cs" />
+    <Compile Include="BusinessLogic\Entities\Group.cs" />
+    <Compile Include="BusinessLogic\Entities\Parcel.cs" />
+    <Compile Include="BusinessLogic\Entities\Permanent.cs" />
+    <Compile Include="BusinessLogic\Entities\Person.cs" />
+    <Compile Include="BusinessLogic\Entities\Temporary.cs" />
+    <Compile Include="BusinessLogic\Entities\Trip.cs" />
+    <Compile Include="BusinessLogic\Entities\Truck.cs" />
     <Compile Include="Persistence\Class1.cs" />
     <Compile Include="Persistence\Entities\Person.cs" />
     <Compile Include="Persistence\Entities\Contract.cs" />
@@ -50,6 +58,7 @@
     <Compile Include="Persistence\Entities\Parcel.cs" />
     <Compile Include="Persistence\Entities\Group.cs" />
     <Compile Include="Persistence\Entities\Crate.cs" />
+    <Compile Include="Persistence\Entities\Product.cs" />
     <Compile Include="Persistence\Entities\Truck.cs" />
     <Compile Include="Persistence\Entities\Trip.cs" />
     <Compile Include="Persistence\Entities\Temporary.cs" />
