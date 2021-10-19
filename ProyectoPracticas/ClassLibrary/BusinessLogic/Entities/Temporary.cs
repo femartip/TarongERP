@@ -8,5 +8,15 @@ namespace TarongISW.Persistence.Entities
 {
     public partial class Temporary
     {
+        public Temporary()
+        {
+
+        }
+        public Temporary(string bankAccount, DateTime initialDate, string SSN,
+        Person hired, DateTime? finalDate) : base(bankAccount, initialDate, SSN, hired)
+        {
+            this.FinalDate = finalDate;
+        }
     }
 }
+
