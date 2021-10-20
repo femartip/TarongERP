@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace TarongISW.Persistence.Entities
 {
-    public partial class Permanent
+    public partial class Permanent : Contract
     {
+        public Double Salary
+        {
+            get;
+            set;
+        }
     }
 }

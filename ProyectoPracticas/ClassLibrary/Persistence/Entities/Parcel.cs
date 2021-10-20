@@ -8,5 +8,41 @@ namespace TarongISW.Persistence.Entities
 {
     public partial class Parcel
     {
+        public String CadastralReference
+        {
+            get;
+            set;
+        }
+
+        public String Name
+        {
+            get;
+            set;
+        }
+
+        public Product Product
+        {
+            get;
+            set;
+        }
+
+        public double Size
+        {
+            get;
+            set;
+        }
+
+        public virtual Person Owner
+        {
+            get;
+            set;
+        }
+
+        public virtual ICollection<Group> Groups
+        {
+            get;
+            set;
+        }
     }
+
 }
