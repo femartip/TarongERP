@@ -8,5 +8,23 @@ namespace TarongISW.Persistence.Entities
 {
     public partial class Person
     {
+        public String Id {
+            set;
+            get;
+        }
+        public String Name {
+            set;
+            get;
+        }
+        public ICollection<Parcel> Parcels
+        {
+            get;
+            set;
+        }
+        public ICollection<Contract> Contracts 
+        {
+            set;
+            get;
+        }
     }
 }
