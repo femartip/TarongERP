@@ -8,5 +8,20 @@ namespace TarongISW.Persistence.Entities
 {
     public partial class Group
     {
+
+        public Group() {
+            //Colecciones 
+            Crates = new List<Crate>();
+            Members = new List<Contract>();
+        }
+
+        public Group(DateTime data, Parcel parcel) : this() {
+            this.Data = data;
+            //relaciones a 1 
+            Parcel = parcel;
+            //Colecciones 
+            Crates = new List<Crate>();
+            Members = new List<Contract>();
+        }
     }
 }

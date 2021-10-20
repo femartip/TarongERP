@@ -8,5 +8,32 @@ namespace TarongISW.Persistence.Entities
 {
     public partial class Group
     {
+        public DateTime Data {
+            get;
+            set;
+        }
+
+        public int Id {
+            get;
+            set;
+        }
+
+        public virtual ICollection<Crate> Crates {
+            get;
+            set;
+        }
+
+        public virtual ICollection<Contract> Members
+        {
+            get;
+            set;
+        }
+
+        public virtual Parcel Parcel{
+            get;
+            set;
+        }
+
+        
     }
 }
