@@ -8,5 +8,30 @@ namespace TarongISW.Persistence.Entities
 {
     public partial class Trip
     {
+        public double CarriedWeight {
+            set;
+            get;
+        }
+        public DateTime? CoopArrival {
+            set;
+            get;
+        }
+        public int Id {
+            set;
+            get;
+        }
+        public DateTime? ParcelExit {
+            set;
+            get;
+        }
+        public DateTime? UnloadTime {
+            set;
+            get;
+        }
+        public ICollection<Crate> Crates
+        {
+            set;
+            get;
+        }
     }
 }
