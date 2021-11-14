@@ -33,5 +33,10 @@ namespace TarongISW.Entities
             set;
             get;
         }
+        public Truck Truck
+        {
+            set;
+            get;
+        }
     }
 }
