@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TarongISW.Persistence.Entities
+namespace TarongISW.Entities
 {
     public partial class Temporary
     {
