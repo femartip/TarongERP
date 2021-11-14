@@ -41,7 +41,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BusinessLogic\Class1.cs" />
     <Compile Include="BusinessLogic\Entities\Contract.cs" />
     <Compile Include="BusinessLogic\Entities\Crate.cs" />
     <Compile Include="BusinessLogic\Entities\Group.cs" />
@@ -52,13 +51,13 @@
     <Compile Include="BusinessLogic\Entities\Trip.cs" />
     <Compile Include="BusinessLogic\Entities\Truck.cs" />
     <Compile Include="Persistence\Class1.cs" />
-    <Compile Include="Persistence\Entities\Product.cs" />
     <Compile Include="Persistence\Entities\Person.cs" />
     <Compile Include="Persistence\Entities\Contract.cs" />
     <Compile Include="Persistence\Entities\Permanent.cs" />
     <Compile Include="Persistence\Entities\Parcel.cs" />
     <Compile Include="Persistence\Entities\Group.cs" />
     <Compile Include="Persistence\Entities\Crate.cs" />
+    <Compile Include="Persistence\Entities\Product.cs" />
     <Compile Include="Persistence\Entities\Truck.cs" />
     <Compile Include="Persistence\Entities\Trip.cs" />
     <Compile Include="Persistence\Entities\Temporary.cs" />

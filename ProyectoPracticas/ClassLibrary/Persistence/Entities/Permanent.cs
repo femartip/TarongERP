@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TarongISW.Entities
+namespace TarongISW.Persistence.Entities
 {
     public partial class Permanent : Contract
     {
