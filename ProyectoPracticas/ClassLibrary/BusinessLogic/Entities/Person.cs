@@ -15,8 +15,9 @@ namespace TarongISW.Entities
         }
         public Person(String id, String Name) : this () 
         {
-            this.Id = id;
             this.Name = Name;
+            this.Id = id;
+
 
         }
     }

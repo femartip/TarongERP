@@ -20,6 +20,8 @@ namespace TarongISW.Entities
             this.Size = size;
             // Relaciones a 1
             Owner = owner;
+            // Colecciones
+            Groups = new List<Group>();
         }
     }
 }

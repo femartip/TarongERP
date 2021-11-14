@@ -13,8 +13,8 @@ namespace TarongISW.Entities
 
         }
 
-        public Permanent(double salary, string bankAccount, DateTime initialDate, string SSN,
-        Person hired) : base(bankAccount, initialDate, SSN, hired)
+        public Permanent(string bankAccount, DateTime initialDate, string SSN,
+        Person hired, double salary) : base(bankAccount, initialDate, SSN, hired)
         {
             this.Salary = salary;
         }

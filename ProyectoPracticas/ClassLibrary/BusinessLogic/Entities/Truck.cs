@@ -13,13 +13,12 @@ namespace TarongISW.Entities
             Trips = new List<Trip>();
         }
 
-        public Truck(double maximumWeight, String id, double maximumAuthorisedMass, double tareWeight) : this()
+        public Truck(String id, double maximumWeight, double maximumAuthorisedMass, double tareWeight) : this()
         {
             this.MaximumAuthorisedMass = maximumWeight;
-            this.Id = id;
             this.MaximumAuthorisedMass = maximumAuthorisedMass;
+            this.Id = id;
             this.TareWeight = tareWeight;
-            //colecciones
         }
     }
 }

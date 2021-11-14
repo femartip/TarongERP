@@ -24,6 +24,8 @@ namespace TarongISW.Entities
             // Relaciones a 1
             Hired = hired;
             // Colecciones
+            Crates = new List<Crate>();
+            Groups = new List<Group>();
         }
     }
 }

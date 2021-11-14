@@ -15,11 +15,13 @@ namespace TarongISW.Entities
             Members = new List<Contract>();
         }
 
-        public Group(DateTime date, Parcel parcel) : this() {
-            this.Date = date;
+        public Group(DateTime data, Parcel parcel) : this() {
+            this.Date = data;
             //relaciones a 1 
             Parcel = parcel;
             //Colecciones 
+            Crates = new List<Crate>();
+            Members = new List<Contract>();
         }
     }
 }

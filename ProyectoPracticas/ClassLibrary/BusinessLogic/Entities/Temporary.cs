@@ -12,7 +12,7 @@ namespace TarongISW.Entities
         {
 
         }
-        public Temporary(string bankAccount, DateTime initialDate, string SSN,
+        public Temporary(string bankAccount, DateTime initialDate, String SSN,
         Person hired, DateTime? finalDate) : base(bankAccount, initialDate, SSN, hired)
         {
             this.FinalDate = finalDate;
