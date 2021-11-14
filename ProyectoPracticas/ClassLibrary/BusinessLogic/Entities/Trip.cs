@@ -13,12 +13,13 @@ namespace TarongISW.Entities
             Crates = new List<Crate>();
         }
 
-        public Trip(double carriedWeight, DateTime? coopArrival, DateTime? parcelExit, DateTime? unloadTime) : this()
+        public Trip(double carriedWeight, DateTime? coopArrival, DateTime? parcelExit, DateTime? unloadTime, Truck truck) : this()
         {
             this.CarriedWeight = carriedWeight;
             this.CoopArrival = coopArrival;
             this.ParcelExit = parcelExit;
             this.UnloadTime = unloadTime;
+            this.Truck = truck;
         }
     }
 }

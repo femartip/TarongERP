@@ -8,10 +8,11 @@ namespace TarongISW.Entities
 {
     public partial class Crate
     {
-        public Crate() { 
+        public Crate() 
+        { 
         
         }
-        public Crate(double? loss, Product product, double? weightInCoop, double weightInParcel, Trip trip, Group group, Contract contract) : this(){
+        public Crate(double? loss, Product product, double? weightInCoop, double weightInParcel, Contract contract, Group group, Trip trip) : this(){
             this.Loss = loss;
             this.WeightInCoop = weightInCoop;
             this.WeightInParcel = weightInParcel;
