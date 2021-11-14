@@ -20,7 +20,6 @@ namespace TarongISW.Entities
             this.MaximumAuthorisedMass = maximumAuthorisedMass;
             this.TareWeight = tareWeight;
             //colecciones
-            Trips = new List<Trip>();
         }
     }
 }

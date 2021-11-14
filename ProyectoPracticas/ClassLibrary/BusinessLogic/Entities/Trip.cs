@@ -21,7 +21,6 @@ namespace TarongISW.Entities
             this.ParcelExit = parcelExit;
             this.UnloadTime = unloadTime;
             //coleccion
-            Crates = new List<Crate>();
 
         }
     }
