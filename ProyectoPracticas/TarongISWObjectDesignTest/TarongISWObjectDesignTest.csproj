@@ -18,8 +18,11 @@
     <PackageReference Include="coverlet.collector" Version="3.0.2" />
   </ItemGroup>
 
+<<<<<<< HEAD
+=======
   <ItemGroup>
     <ProjectReference Include="..\ClassLibrary\TarongISWLib.csproj" />
   </ItemGroup>
 
+>>>>>>> 816e8c563d24f74038b0e389d48f8b3994872a86
 </Project>
