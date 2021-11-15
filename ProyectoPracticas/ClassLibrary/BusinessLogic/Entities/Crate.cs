@@ -12,9 +12,8 @@ namespace TarongISW.Entities
         { 
         
         }
-        public Crate(double? loss, Product product, double? weightInCoop, double weightInParcel, Contract contract, Group group, Trip trip) : this(){
-            this.Loss = loss;
-            this.WeightInCoop = weightInCoop;
+        public Crate(Product product, double weightInParcel, Contract contract, Group group, Trip trip) : this(){
+            //this.WeightInCoop = weightInCoop;
             this.WeightInParcel = weightInParcel;
             this.Product = product;
             // Relaciones a 1

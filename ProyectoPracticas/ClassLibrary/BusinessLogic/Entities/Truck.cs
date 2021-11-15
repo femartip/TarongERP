@@ -13,9 +13,9 @@ namespace TarongISW.Entities
             Trips = new List<Trip>();
         }
 
-        public Truck(String id, double maximumWeight, double maximumAuthorisedMass, double tareWeight) : this()
+        public Truck(String id, double maximumAuthorisedMass, double tareWeight) : this()
         {
-            this.MaximumAuthorisedMass = maximumWeight;
+            this.MaximunWeight = maximumAuthorisedMass - tareWeight;
             this.MaximumAuthorisedMass = maximumAuthorisedMass;
             this.Id = id;
             this.TareWeight = tareWeight;

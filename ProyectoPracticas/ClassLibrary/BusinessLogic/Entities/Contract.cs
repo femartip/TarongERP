@@ -14,8 +14,7 @@ namespace TarongISW.Entities
             Crates = new List<Crate>();
             Groups = new List<Group>();
         }
-        public Contract(string bankAccount, DateTime initialDate, string SSN, Person
-        hired) : this()
+        public Contract(string bankAccount, DateTime initialDate, string SSN, Person hired) : this()
         {
             // No se le da valor a Id porque se lo dará EF
             this.BankAccount = bankAccount;

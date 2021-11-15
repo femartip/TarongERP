@@ -16,12 +16,12 @@ namespace TarongISW.Entities
             set;
             get;
         }
-        public ICollection<Parcel> Parcels
+        public virtual ICollection<Parcel> Parcels
         {
             get;
             set;
         }
-        public ICollection<Contract> Contracts 
+        public virtual ICollection<Contract> Contracts 
         {
             set;
             get;
