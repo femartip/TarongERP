@@ -12,7 +12,7 @@ namespace TarongISW.Persistence
     public class TarongISWDbContext : DbContextISW
     {
 
-        public TarongISWDbContext(String s) : base(s) { }
+        public TarongISWDbContext() : base("Name=TarongISWDbConnection") { }
         public IDbSet<Contract> Contracts  { get; set; }
         public IDbSet<Crate> Crates { get; set; }
         public IDbSet<Group> Groups { get; set; }
