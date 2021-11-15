@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace TarongISW.Entities
 {
@@ -14,6 +16,7 @@ namespace TarongISW.Entities
             set;
         }
 
+        [Key]
         public int Id 
         {
             get;
@@ -34,16 +37,22 @@ namespace TarongISW.Entities
             get;
             set;
         }
+
+        [InverseProperty("Crates")]
         public virtual Trip Trip 
         {
             get;
             set;
         }
+
+        [InverseProperty("Crates")]
         public virtual Group Group 
         {
             get;
             set;
         }
+
+        [InverseProperty("Crates")]
         public virtual Contract Contract 
         {
             get;

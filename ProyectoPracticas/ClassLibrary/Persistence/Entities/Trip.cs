@@ -1,8 +1,10 @@
-﻿using System;
+﻿using System.ComponentModel.DataAnnotations;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace TarongISW.Entities
 {
@@ -16,6 +18,8 @@ namespace TarongISW.Entities
             set;
             get;
         }
+
+        [Key]
         public int Id {
             set;
             get;
@@ -28,11 +32,15 @@ namespace TarongISW.Entities
             set;
             get;
         }
+
+        [InverseProperty("Trip")]
         public ICollection<Crate> Crates
         {
             set;
             get;
         }
+
+        [InverseProperty("Trips")]
         public Truck Truck
         {
             set;
