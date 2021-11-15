@@ -35,7 +35,7 @@ namespace TarongISW.Entities
             set;
         }
 
-        [InverseProperty("¨Groups")]
+        [InverseProperty("Groups")]
         public virtual Parcel Parcel{
             get;
             set;
