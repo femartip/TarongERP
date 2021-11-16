@@ -22,5 +22,14 @@ namespace TarongISW.Persistence
         public IDbSet<Temporary> Temporaries  { get; set; }
         public IDbSet<Trip> Trips { get; set; }
         public IDbSet<Truck> Trucks { get; set; }
-}
+
+        static TarongISWDbContext()
+        {
+            //Database.SetInitializer<VehicleRentalDbContext>(new CreateDatabaseIfNotExists<VehicleRentalDbContext>());
+            Database.SetInitializer<TarongISWDbContext>(new DropCreateDatabaseIfModelChanges<TarongISWDbContext>());
+            //Database.SetInitializer<VehicleRentalDbContext>(new DropCreateDatabaseAlways<VehicleRentalDbContext>());
+            //Database.SetInitializer<VehicleRentalDbContext>(new VehicleRentalDbInitializer());
+            //Database.SetInitializer(new NullDatabaseInitializer<VehicleRentalDbContext>());
+        }
+    }
 }
