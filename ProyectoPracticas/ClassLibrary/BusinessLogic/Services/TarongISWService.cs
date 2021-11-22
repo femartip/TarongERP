@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TarongISW.Persistence;
 using TarongISW.Entities;
+using System.Linq;
 
 namespace TarongISW.BusinessLogic.Services
 {
@@ -47,7 +48,10 @@ namespace TarongISW.BusinessLogic.Services
             {
                 throw new ServiceException("Member repeated");
             }
-
+            if (crate.Group.Members.Except(dal.GetWhere<Contract>(x => x.Groups.Any(y => y.Date == crate.Group.Date))).Count() == crate.Group.Members.Count())
+            { 
+            
+            }
 
         }
     }
