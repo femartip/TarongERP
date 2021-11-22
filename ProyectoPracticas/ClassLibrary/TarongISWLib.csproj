@@ -60,6 +60,9 @@
     <Compile Include="BusinessLogic\Entities\Temporary.cs" />
     <Compile Include="BusinessLogic\Entities\Trip.cs" />
     <Compile Include="BusinessLogic\Entities\Truck.cs" />
+    <Compile Include="BusinessLogic\Services\ITarongISWService.cs" />
+    <Compile Include="BusinessLogic\Services\TarongISWService.cs" />
+    <Compile Include="BusinessLogic\Services\ServiceException.cs" />
     <Compile Include="Persistence\Entities\Product.cs" />
     <Compile Include="Persistence\Entities\Person.cs" />
     <Compile Include="Persistence\Entities\Contract.cs" />
