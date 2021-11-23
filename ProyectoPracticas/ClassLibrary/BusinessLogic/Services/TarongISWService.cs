@@ -90,8 +90,8 @@ namespace TarongISW.BusinessLogic.Services
             if (dal.GetWhere<Truck>(x => x.Id == plateNumber) != null)
             {
                 
-                dal.Commit();
+                Commit();
             }
-            else throw new ServiceException("No existe camión con  matricula " + plateNumber + " .");
+            else throw new ServiceException("No existe camión con  matricula " + plateNumber + ".");
         }
 }
