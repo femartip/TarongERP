@@ -87,9 +87,9 @@ namespace TarongISW.BusinessLogic.Services
 
         public void AssignTripToTruck(string plateNumber) //Caso de uso 4
         {
-            if (dal.GetWhere<Truck>(x => x.Id == plateNumber) != null)
+            if (dal.GetById<Truck>(plateNumber) != null)
             {
-                
+                dal.GetById<Truck>(plateNumber).Trips.Add(dal.GetWhere<Trip>(z => z.Truck == null).First());
                 Commit();
             }
             else throw new ServiceException("No existe camión con  matricula " + plateNumber + ".");
