@@ -63,10 +63,6 @@ namespace TarongISW.BusinessLogic.Services
 
         //Nuestros métodos
 
-        public void addContract(Contract contract) 
-        { 
-
-        }
 
         public void addGroup(Group group) 
         {
@@ -79,10 +75,17 @@ namespace TarongISW.BusinessLogic.Services
                 throw new ServiceException("Member repeated");
             }
             if (group.Members.Except(dal.GetWhere<Contract>(x => x.Groups.Any(y => y.Date == group.Date))).Count() == group.Members.Count())
-            { 
-            
+            {
+                throw new ServiceException("Memebr already in other group");
             }
+            dal.Insert<Group>(group);
+            Commit();
 
+        }
+
+        public List<Group> GetAllGroups()
+        {
+            return new List<Group>(dal.GetAll<Group>());
         }
 
         public void AssignTripToTruck(string plateNumber) //Caso de uso 4
