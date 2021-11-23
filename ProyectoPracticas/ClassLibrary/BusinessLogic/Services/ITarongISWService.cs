@@ -9,9 +9,38 @@ namespace TarongISW.BusinessLogic.Services
 {
     public interface ITarongISWService
     {
-        void addPerson(Person person);
-        void addContract(Contract contract);
-        void addCrate(Crate crate);
-        void AssignTripToTruck(string plateNumber); //Caso de uso 4
+        void RemoveAllData();
+        void Commit();
+
+        // Necesario para la inicialización de la BD
+        void AddPerson(Person p);
+        void AddParcel(Parcel parcel);
+        void AddTruck(Truck truck);
+
+        // A partir de aquí son los CU pedidos
+        Person FindPersonById(string id);
+
+        void AddPermanent(Permanent perm);
+        void AddTemporary(Temporary temp);
+        List<Contract> GetAllContracts();
+
+        Parcel FindParcelById(string cadas);
+
+        void AddGroup(Group group);
+        List<Group> GetAllGroups();
+
+        Truck FindTruckById(string id);
+        List<Truck> GetAllTrucks();
+
+        List<Trip> GetAllTrips();
+
+        void AddCrate(Crate crate);
+        List<Crate> GetAllCrates();
+
+        void AssignTripToTruck(string plateNumber);
+
+        void AddCrateToTrip(Parcel p, string dni, string plateNumber, Product product, double weightInParcel);
+
+        List<Trip> GetTruckTrips(string plateNumber, DateTime startDate, DateTime endDate);
     }
 }

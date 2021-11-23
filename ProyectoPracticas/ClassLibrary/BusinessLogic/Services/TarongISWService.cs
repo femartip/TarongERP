@@ -34,7 +34,7 @@ namespace TarongISW.BusinessLogic.Services
             if (dal.GetById<Person>(person.Id) == null)
             {
                 dal.Insert<Person>(person);
-                dal.Commit();
+                Commit();
             }
             else throw new ServiceException("Persona con identificador " + person.Id + " ya existe.");
         }
@@ -45,7 +45,7 @@ namespace TarongISW.BusinessLogic.Services
             if (!dal.GetWhere<Parcel>(x => x.Name == parcel.Name).Any())
             {
                 dal.Insert<Parcel>(parcel);
-                dal.Commit();
+                Commit();
             }
             else throw new ServiceException("Paquete con nombre " + parcel.Name + " ya existe.");
         }
@@ -56,7 +56,7 @@ namespace TarongISW.BusinessLogic.Services
             if (dal.GetById<Truck>(truck.Id) == null)
             {
                 dal.Insert<Truck>(truck);
-                dal.Commit();
+                Commit();
             }
             else throw new ServiceException("Camión con Id " + truck.Id + " ya existe.");
         }
@@ -68,17 +68,17 @@ namespace TarongISW.BusinessLogic.Services
 
         }
 
-        public void addCrate(Crate crate) 
+        public void addGroup(Group group) 
         {
-            if (dal.GetWhere<Crate>(x => x.Group.Parcel == crate.Group.Parcel && x.Group.Date == crate.Group.Date) != null) 
+            if (dal.GetWhere<Group>(x => x.Parcel == group.Parcel && x.Date == group.Date) != null) 
             {
-                throw new ServiceException("Another crate already");
+                throw new ServiceException("Another group already");
             }
-            if (crate.Group.Members.Distinct().Count() != crate.Group.Members.Count())
+            if (group.Members.Distinct().Count() != group.Members.Count())
             {
                 throw new ServiceException("Member repeated");
             }
-            if (crate.Group.Members.Except(dal.GetWhere<Contract>(x => x.Groups.Any(y => y.Date == crate.Group.Date))).Count() == crate.Group.Members.Count())
+            if (group.Members.Except(dal.GetWhere<Contract>(x => x.Groups.Any(y => y.Date == group.Date))).Count() == group.Members.Count())
             { 
             
             }
