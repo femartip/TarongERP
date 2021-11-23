@@ -12,5 +12,6 @@ namespace TarongISW.BusinessLogic.Services
         void addPerson(Person person);
         void addContract(Contract contract);
         void addCrate(Crate crate);
+        void AssignTripToTruck(string plateNumber); //Caso de uso 4
     }
 }
