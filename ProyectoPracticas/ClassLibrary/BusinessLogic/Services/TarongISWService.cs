@@ -64,9 +64,9 @@ namespace TarongISW.BusinessLogic.Services
         //Nuestros métodos
 
 
-        public void addGroup(Group group) 
+        public void addGroup(Group group)
         {
-            if (dal.GetWhere<Group>(x => x.Parcel == group.Parcel && x.Date == group.Date) != null) 
+            if (dal.GetWhere<Group>(x => x.Parcel == group.Parcel && x.Date == group.Date) != null)
             {
                 throw new ServiceException("Another group already");
             }
@@ -92,9 +92,75 @@ namespace TarongISW.BusinessLogic.Services
         {
             if (dal.GetWhere<Truck>(x => x.Id == plateNumber) != null)
             {
-                
+
                 Commit();
             }
             else throw new ServiceException("No existe camión con  matricula " + plateNumber + " .");
         }
+
+        public Person FindPersonById(string id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void AddPermanent(Permanent perm)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void AddTemporary(Temporary temp)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Contract> GetAllContracts()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Parcel FindParcelById(string cadas)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void AddGroup(Group group)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Truck FindTruckById(string id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Truck> GetAllTrucks()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Trip> GetAllTrips()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void AddCrate(Crate crate)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Crate> GetAllCrates()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void AddCrateToTrip(Parcel p, string dni, string plateNumber, Product product, double weightInParcel)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Trip> GetTruckTrips(string plateNumber, DateTime startDate, DateTime endDate)
+        {
+            throw new NotImplementedException();
+        }
+    }
 }
