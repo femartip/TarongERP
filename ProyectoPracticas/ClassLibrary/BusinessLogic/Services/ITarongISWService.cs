@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TarongISW.Entities;
 
-namespace TarongISW.BusinessLogic.Services
+namespace TarongISW.Services
 {
     public interface ITarongISWService
     {
