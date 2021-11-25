@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TarongISW.BusinessLogic.Services
+namespace TarongISW.Services
 {
     class ServiceException:Exception
     {

@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using TarongISW.Persistence;
 using TarongISW.Entities;
-using System.Linq;
 
-namespace TarongISW.BusinessLogic.Services
+
+namespace TarongISW.Services
 {
     public class TarongISWService : ITarongISWService
     {
@@ -98,25 +98,60 @@ namespace TarongISW.BusinessLogic.Services
             else throw new ServiceException("No existe camión con  matricula " + plateNumber + " .");
         }
 
-        public Person FindPersonById(string id)
+        public Person FindPersonById(string id) 
         {
             throw new NotImplementedException();
         }
 
-        public void AddPermanent(Permanent perm)
+
+        public void AddPermanent(Permanent perm)    //Caso de Uso 1
         {
-            throw new NotImplementedException();
+            if (dal.GetById<Person>(perm.Id) == null) {
+                //Call Alta Persona, ns que es 
+            } else if (dal.Exists<Contract>(perm.Id)) {
+                throw new ServiceException("Contract already exists");
+            }
+            Permanent cnt;
+            try
+            {
+                cnt = new Permanent(perm.BankAccount, perm.InitialDate, perm.SSN, perm.Hired, perm.Salary);
+            }
+            catch (ServiceException) {
+                throw new ServiceException("Infomation not valid");
+            }
+            dal.Insert<Contract>(cnt);
+            dal.Commit();
         }
 
-        public void AddTemporary(Temporary temp)
+        public void AddTemporary(Temporary temp)    //Caso de Uso 1
         {
-            throw new NotImplementedException();
+            if (dal.GetById<Person>(temp.Id) == null)
+            {
+                //Call Alta Persona, ns que es 
+            }
+            else if (dal.Exists<Contract>(temp.Id))
+            {
+                throw new ServiceException("Contract already exists");
+            }
+            Temporary cnt;
+            try
+            {
+                cnt = new Temporary(temp.BankAccount, temp.InitialDate, temp.SSN, temp.Hired);
+            }
+            catch (ServiceException)
+            {
+                throw new ServiceException("Infomation not valid");
+            }
+            dal.Insert<Contract>(cnt);
+            dal.Commit();
         }
 
         public List<Contract> GetAllContracts()
         {
-            throw new NotImplementedException();
+            return new List<Contract>(dal.GetAll<Contract>());
         }
+
+     
 
         public Parcel FindParcelById(string cadas)
         {
