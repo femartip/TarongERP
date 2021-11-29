@@ -106,44 +106,45 @@ namespace TarongISW.Services
 
         public void AddPermanent(Permanent perm)    //Caso de Uso 1
         {
-            if (dal.GetById<Person>(perm.Id) == null) {
-                //Call Alta Persona, ns que es 
-            } else if (dal.Exists<Contract>(perm.Id)) {
-                throw new ServiceException("Contract already exists");
-            }
-            Permanent cnt;
             try
             {
-                cnt = new Permanent(perm.BankAccount, perm.InitialDate, perm.SSN, perm.Hired, perm.Salary);
+
+                if (dal.GetById<Person>(perm.Hired.Id) == null)
+                {
+                    AddPerson(perm.Hired); 
+                }
+                else
+                {
+                    dal.Insert<Permanent>(perm);
+                    dal.Commit();
+                }
+
             }
             catch (ServiceException) {
                 throw new ServiceException("Infomation not valid");
             }
-            dal.Insert<Contract>(cnt);
-            dal.Commit();
         }
 
         public void AddTemporary(Temporary temp)    //Caso de Uso 1
         {
-            if (dal.GetById<Person>(temp.Id) == null)
-            {
-                //Call Alta Persona, ns que es 
-            }
-            else if (dal.Exists<Contract>(temp.Id))
-            {
-                throw new ServiceException("Contract already exists");
-            }
-            Temporary cnt;
             try
             {
-                cnt = new Temporary(temp.BankAccount, temp.InitialDate, temp.SSN, temp.Hired);
+
+                if (dal.GetById<Person>(temp.Hired.Id) == null)
+                {
+                    AddPerson(temp.Hired);
+                }
+                else
+                {
+                    dal.Insert<Temporary>(temp);
+                    dal.Commit();
+                }
+
             }
             catch (ServiceException)
             {
                 throw new ServiceException("Infomation not valid");
             }
-            dal.Insert<Contract>(cnt);
-            dal.Commit();
         }
 
         public List<Contract> GetAllContracts()
