@@ -142,8 +142,7 @@ namespace TarongISW.Services
 
             }
             catch (ServiceException)
-            {
-                throw new ServiceException("Infomation not valid");
+            {               throw new ServiceException("Infomation not valid");
             }
         }
 

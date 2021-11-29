@@ -20,5 +20,13 @@ namespace TarongISW.Entities
 
 
         }
+
+        public Contract LastActiveContract()
+        {
+            if (Contracts.Count == 0) return null;
+            Contract lastCount = Contracts.OrderBy(cont => cont.InitialDate).Last();
+            if (lastCount.Active()) return lastCount;
+            else return null;
+        }
     }
 }

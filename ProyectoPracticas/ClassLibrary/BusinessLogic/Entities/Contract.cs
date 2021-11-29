@@ -26,5 +26,17 @@ namespace TarongISW.Entities
             Crates = new List<Crate>();
             Groups = new List<Group>();
         }
+
+        internal bool Active()
+        {
+            if (this is Permanent) return true;
+            else {
+                Temporary t = (Temporary)this;
+                if (t.FinalDate != null)
+                    if (t.FinalDate >= DateTime.Today) return true;
+                    else return false;
+                else return true;
+            }
+        }
     }
 }

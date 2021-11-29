@@ -41,6 +41,8 @@ namespace TarongISW.Entities
             set;
         }
 
+      
+
         [InverseProperty("Contract")]
         public virtual ICollection<Crate> Crates
         {

@@ -22,6 +22,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TarongISWObjectDesignTest",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TarongISWPersistenceTests", "TarongISWPersistenceTests\TarongISWPersistenceTests.csproj", "{7918C698-556B-4782-869C-300D61DDA666}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "3-BusinessLogicTest", "BusinessLogicTest\3-BusinessLogicTest.csproj", "{B08CF855-97C2-48EF-B0EE-D21F0883C6CF}"
+	ProjectSection(ProjectDependencies) = postProject
+		{95930E88-77F2-4D30-B856-40242129B271} = {95930E88-77F2-4D30-B856-40242129B271}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -44,6 +49,10 @@ Global
 		{7918C698-556B-4782-869C-300D61DDA666}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7918C698-556B-4782-869C-300D61DDA666}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7918C698-556B-4782-869C-300D61DDA666}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B08CF855-97C2-48EF-B0EE-D21F0883C6CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B08CF855-97C2-48EF-B0EE-D21F0883C6CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B08CF855-97C2-48EF-B0EE-D21F0883C6CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B08CF855-97C2-48EF-B0EE-D21F0883C6CF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -54,6 +63,7 @@ Global
 		{C3D2E63B-9B7D-4C19-9AB9-976381F01FAB} = {6283EFA6-C095-478B-80E3-E41A441F1732}
 		{CA35CD25-D953-4C97-8CEB-C7C72A0BF2C8} = {1C325C38-3959-48B8-A985-5EACB537ADC3}
 		{7918C698-556B-4782-869C-300D61DDA666} = {1C325C38-3959-48B8-A985-5EACB537ADC3}
+		{B08CF855-97C2-48EF-B0EE-D21F0883C6CF} = {1C325C38-3959-48B8-A985-5EACB537ADC3}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A6FB8AA0-CBAE-467D-8BA7-1616941C1993}
