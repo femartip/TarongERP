@@ -173,10 +173,31 @@ namespace TarongISW.Services
             }
             else throw new ServiceException("No existe camión con  matricula " + plateNumber + ".");
         }
+
         public void AddCrateToTrip(Parcel p, string dni, string plateNumber, Product product, double weightInParcel)
         {
-            throw new NotImplementedException();
+            if (dal.GetById<Parcel>(p.CadastralReference) == null)
+            {
+                throw new ServiceException("Parcel does not exists");
+            }
+            else if (dal.GetById<Person>(dni) == null)
+            {
+                throw new ServiceException("Person does not exists");
+            }
+            else if (dal.GetById<Person>(dni).LastActiveContract() == null)
+            {  //Falta -> ||no esta asignada a una cuadrilla en la parcela
+                throw new ServiceException("Person not asigned to group or contract not active");
+            }
+            else if (dal.GetById<Truck>(plateNumber) == null)
+            {
+                throw new ServiceException("Plate number does not exist");
+            }
+            //falta comparar pesos
+            else {
+                //dal.GetById<Truck>(plateNumber).LastTrip().Add();     Añade la caja al ultimo viaje del camion
+            }
         }
+
         public List<Trip> GetTruckTrips(string plateNumber, DateTime startDate, DateTime endDate)
         {
             if (FindTruckById(plateNumber) == null) 
