@@ -20,5 +20,18 @@ namespace TarongISW.Entities
             this.Id = id;
             this.TareWeight = tareWeight;
         }
-    }
+        public void AddTrip(Trip t)
+        {
+            Trips.Add(t);
+        }
+        public Trip LastTrip()
+        {
+            return Trips.Last<Trip>();
+        }
+        public List<Trip> TripsByDate(DateTime initialDate, DateTime finalDate)
+        {
+            return Trips.Where<Trip>(x => x.ParcelExit >= initialDate && x.CoopArrival <= finalDate).ToList();
+        }
+    
+}
 }

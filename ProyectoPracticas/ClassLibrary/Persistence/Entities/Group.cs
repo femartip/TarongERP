@@ -40,9 +40,6 @@ namespace TarongISW.Entities
             get;
             set;
         }
-        public void AddMember(Contract c) 
-        {
-            this.Members.Add(c);
-        }
+
     }
 }

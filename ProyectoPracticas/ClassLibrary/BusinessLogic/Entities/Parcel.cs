@@ -23,5 +23,9 @@ namespace TarongISW.Entities
             // Colecciones
             Groups = new List<Group>();
         }
+        public Group LastGroup()
+        {
+            return Groups.Last<Group>();
+        }
     }
 }

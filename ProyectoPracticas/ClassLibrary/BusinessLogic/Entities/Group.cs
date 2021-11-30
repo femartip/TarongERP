@@ -23,5 +23,9 @@ namespace TarongISW.Entities
             Crates = new List<Crate>();
             Members = new List<Contract>();
         }
+        public void AddMember(Contract c)
+        {
+            this.Members.Add(c);
+        }
     }
 }
