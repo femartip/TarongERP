@@ -165,7 +165,9 @@ namespace TarongISW.Services
 
         public Truck FindTruckById(string id)
         {
-            throw new NotImplementedException();
+
+            return dal.GetById<Truck>(id);
+            //throw new NotImplementedException();
         }
 
         public List<Truck> GetAllTrucks()
@@ -195,7 +197,24 @@ namespace TarongISW.Services
 
         public List<Trip> GetTruckTrips(string plateNumber, DateTime startDate, DateTime endDate)
         {
-            throw new NotImplementedException();
+
+                List<Trip> viajes = new List<Trip>();
+                Truck t = findTruckByID(id);
+
+                if (t != null)
+                {
+
+                    viajes = Trip.get(t);
+                    int startDate = startDate.Date;
+                    int endDate = endDate.Date;
+                    
+                    viajes
+                }
+                else { throw new ServiceException("El camión no existe")}
+
+                return viajes;
+            }
+            //throw new NotImplementedException();
         }
     }
 }
