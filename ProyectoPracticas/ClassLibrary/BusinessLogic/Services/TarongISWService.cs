@@ -72,14 +72,19 @@ namespace TarongISW.Services
             {
                 if (dal.GetById<Person>(perm.Hired.Id) == null)
                 {
-                    AddPerson(perm.Hired); 
-                }
-                else
+                    AddPerson(perm.Hired);
+                    dal.Insert<Permanent>(perm);
+                    dal.Commit();
+
+                } 
+                else if(perm.Hired.LastActiveContract() != null)
+                {
+                    throw new ServiceException("Active contract");
+                } else
                 {
                     dal.Insert<Permanent>(perm);
                     dal.Commit();
                 }
-
             } catch (ServiceException) { throw new ServiceException("Infomation not valid"); }
         }
         public void AddTemporary(Temporary temp)    //Caso de Uso 1
@@ -89,13 +94,19 @@ namespace TarongISW.Services
                 if (dal.GetById<Person>(temp.Hired.Id) == null)
                 {
                     AddPerson(temp.Hired);
+                    dal.Insert<Temporary>(temp);
+                    dal.Commit();
+
+                }
+                else if (temp.Hired.LastActiveContract() != null)
+                {
+                    throw new ServiceException("Active contract");
                 }
                 else
                 {
                     dal.Insert<Temporary>(temp);
                     dal.Commit();
                 }
-
             } catch (ServiceException)
             {
                 throw new ServiceException("Infomation not valid");
@@ -183,7 +194,7 @@ namespace TarongISW.Services
         {
 
                 List<Trip> viajes = new List<Trip>();
-                Truck t = FindTruckById(plateNumber);
+                Truck t = findTruckById(id);
                 if (t != null)
                 {
 
