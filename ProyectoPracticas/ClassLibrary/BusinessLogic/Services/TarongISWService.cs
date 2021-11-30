@@ -62,9 +62,55 @@ namespace TarongISW.Services
         }
 
         //Nuestros métodos
+        public Person FindPersonById(string id) 
+        {
+            return dal.GetById<Person>(id);
+        }
+        public void AddPermanent(Permanent perm)    //Caso de Uso 1
+        {
+            try
+            {
+                if (dal.GetById<Person>(perm.Hired.Id) == null)
+                {
+                    AddPerson(perm.Hired); 
+                }
+                else
+                {
+                    dal.Insert<Permanent>(perm);
+                    dal.Commit();
+                }
 
+            } catch (ServiceException) { throw new ServiceException("Infomation not valid"); }
+        }
+        public void AddTemporary(Temporary temp)    //Caso de Uso 1
+        {
+            try
+            {
+                if (dal.GetById<Person>(temp.Hired.Id) == null)
+                {
+                    AddPerson(temp.Hired);
+                }
+                else
+                {
+                    dal.Insert<Temporary>(temp);
+                    dal.Commit();
+                }
 
-        public void addGroup(Group group)
+            } catch (ServiceException)
+            {
+                throw new ServiceException("Infomation not valid");
+            }
+        }
+        public List<Contract> GetAllContracts() 
+        {
+            return dal.GetAll<Contract>().ToList();
+        }
+        public Parcel FindParcelById(string cadas) 
+        {
+            return dal.GetById<Parcel>(cadas);
+        }
+
+        public void AddGroup(Group group)
         {
             if (dal.GetWhere<Group>(x => x.Parcel == group.Parcel && x.Date == group.Date) != null)
             {
@@ -82,12 +128,31 @@ namespace TarongISW.Services
             Commit();
 
         }
-
         public List<Group> GetAllGroups()
         {
             return new List<Group>(dal.GetAll<Group>());
         }
+        public Truck FindTruckById(string id)
+        {
+            return dal.GetById<Truck>(id);
+        }
+        public List<Truck> GetAllTrucks()
+        {
+            return dal.GetAll<Truck>().ToList(); 
+        }
+        public List<Trip> GetAllTrips()
+        {
+            return dal.GetAll<Trip>().ToList();
+        }
+        public void AddCrate(Crate crate)
+        {
+            throw new NotImplementedException();
+        }
 
+        public List<Crate> GetAllCrates()
+        {
+            return dal.GetAll<Crate>().ToList();
+        }
         public void AssignTripToTruck(string plateNumber) //Caso de uso 4
         {
             if (dal.GetById<Truck>(plateNumber) != null)
@@ -97,124 +162,41 @@ namespace TarongISW.Services
             }
             else throw new ServiceException("No existe camión con  matricula " + plateNumber + ".");
         }
-
-        public Person FindPersonById(string id) 
-        {
-            throw new NotImplementedException();
-        }
-
-
-        public void AddPermanent(Permanent perm)    //Caso de Uso 1
-        {
-            try
-            {
-
-                if (dal.GetById<Person>(perm.Hired.Id) == null)
-                {
-                    AddPerson(perm.Hired); 
-                }
-                else
-                {
-                    dal.Insert<Permanent>(perm);
-                    dal.Commit();
-                }
-
-            }
-            catch (ServiceException) {
-                throw new ServiceException("Infomation not valid");
-            }
-        }
-
-        public void AddTemporary(Temporary temp)    //Caso de Uso 1
-        {
-            try
-            {
-
-                if (dal.GetById<Person>(temp.Hired.Id) == null)
-                {
-                    AddPerson(temp.Hired);
-                }
-                else
-                {
-                    dal.Insert<Temporary>(temp);
-                    dal.Commit();
-                }
-
-            }
-            catch (ServiceException)
-            {               throw new ServiceException("Infomation not valid");
-            }
-        }
-
-        public List<Contract> GetAllContracts()
-        {
-            return new List<Contract>(dal.GetAll<Contract>());
-        }
-
-     
-
-        public Parcel FindParcelById(string cadas)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void AddGroup(Group group)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Truck FindTruckById(string id)
-        {
-
-            return dal.GetById<Truck>(id);
-            //throw new NotImplementedException();
-        }
-
-        public List<Truck> GetAllTrucks()
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<Trip> GetAllTrips()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void AddCrate(Crate crate)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<Crate> GetAllCrates()
-        {
-            throw new NotImplementedException();
-        }
-
         public void AddCrateToTrip(Parcel p, string dni, string plateNumber, Product product, double weightInParcel)
         {
             throw new NotImplementedException();
         }
-
+        public List<Trip> GetTruckTrips(string plateNumber, DateTime startDate, DateTime endDate)
+        {
+            if (FindTruckById(plateNumber) == null) 
+            {
+                throw new ServiceException("Truck not exists");
+            }
+            if (endDate.CompareTo(startDate) > 0) 
+            {
+                throw new ServiceException("Invalid dates");
+            }
+            return FindTruckById(plateNumber).TripsByDate(startDate, endDate);
+        }
+        /*
         public List<Trip> GetTruckTrips(string plateNumber, DateTime startDate, DateTime endDate)
         {
 
                 List<Trip> viajes = new List<Trip>();
-                Truck t = findTruckByID(id);
-
+                Truck t = FindTruckById(plateNumber);
                 if (t != null)
                 {
 
                     viajes = Trip.get(t);
                     int startDate = startDate.Date;
                     int endDate = endDate.Date;
-                    
-                    viajes
+
+                    viajes;
                 }
-                else { throw new ServiceException("El camión no existe")}
+                else { throw new ServiceException("El camión no existe");  }
 
                 return viajes;
             }
-            //throw new NotImplementedException();
+            //throw new NotImplementedException();*/
         }
     }
-}

@@ -46,5 +46,6 @@ namespace TarongISW.Entities
             set;
             get;
         }
+        
     }
 }

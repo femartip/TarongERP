@@ -48,6 +48,10 @@ namespace TarongISW.Entities
             get;
             set;
         }
+        public Group LastGroup() 
+        {
+            return Groups.Last<Group>();
+        }
     }
 
 }

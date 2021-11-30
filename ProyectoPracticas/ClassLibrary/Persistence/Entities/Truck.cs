@@ -39,5 +39,17 @@ namespace TarongISW.Entities
             set;
             get;
         }
+        public void AddTrip(Trip t)
+        {
+            Trips.Add(t);
+        }
+        public Trip LastTrip()
+        {
+            return Trips.Last<Trip>();
+        }
+        public List<Trip> TripsByDate(DateTime initialDate, DateTime finalDate) 
+        {
+            return Trips.Where<Trip>(x => x.ParcelExit >= initialDate && x.CoopArrival <= finalDate).ToList();
+        }
     }
 }
