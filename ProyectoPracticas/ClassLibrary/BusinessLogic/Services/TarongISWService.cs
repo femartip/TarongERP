@@ -174,7 +174,7 @@ namespace TarongISW.Services
             else throw new ServiceException("No existe camión con  matricula " + plateNumber + ".");
         }
 
-        public void AddCrateToTrip(Parcel p, string dni, string plateNumber, Product product, double weightInParcel)
+        public void AddCrateToTrip(Parcel p, string dni, string plateNumber, Product product, double weightInParcel) // Caso de uso 5
         {
             if (dal.GetById<Parcel>(p.CadastralReference) == null)
             {
