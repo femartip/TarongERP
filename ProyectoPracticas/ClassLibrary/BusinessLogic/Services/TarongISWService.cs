@@ -155,8 +155,15 @@ namespace TarongISW.Services
         {
             return dal.GetAll<Trip>().ToList();
         }
-        public void AddCrate(Crate crate)
+        public void AddCrate(Crate crate /*,Trip trip*/ )
         {
+            /* if ((dal.GetById<Crate>(crate.Id) == null))
+             {
+                 dal.Insert<Crate>(crate);
+                 Commit();
+             }
+             else throw new ServiceException("La caja con " + crate.Id + " no existe.");
+             */
             throw new NotImplementedException();
         }
 
@@ -176,6 +183,7 @@ namespace TarongISW.Services
 
         public void AddCrateToTrip(Parcel p, string dni, string plateNumber, Product product, double weightInParcel) // Caso de uso 5
         {
+            //Crate caja = GetAllCrates().Where(x => x.GetProduct() == product && x.getWeightInParcel = weightInParcel);
             if (dal.GetById<Parcel>(p.CadastralReference) == null)
             {
                 throw new ServiceException("Parcel does not exists");
@@ -191,10 +199,11 @@ namespace TarongISW.Services
             else if (dal.GetById<Truck>(plateNumber) == null)
             {
                 throw new ServiceException("Plate number does not exist");
-            }
+            } 
             //falta comparar pesos
             else {
-                //dal.GetById<Truck>(plateNumber).LastTrip().Add();     Añade la caja al ultimo viaje del camion
+                //AddCrate(caja, dal.GetById<Truck>(plateNumber).LastTrip());
+                //dal.GetById<Truck>(plateNumber).LastTrip().AddCrate(caja);     //Añade la caja al ultimo viaje del camion
             }
         }
 
