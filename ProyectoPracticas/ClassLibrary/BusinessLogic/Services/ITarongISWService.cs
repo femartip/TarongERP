@@ -37,9 +37,9 @@ namespace TarongISW.Services
         void AddCrate(Crate crate);
         List<Crate> GetAllCrates();
 
-        void AssignTripToTruck(string plateNumber);
+        /*void AssignTripToTruck(string plateNumber);*/
 
-        void AddCrateToTrip(Parcel p, string dni, string plateNumber, Product product, double weightInParcel);
+        /*void AddCrateToTrip(Parcel p, string dni, string plateNumber, Product product, double weightInParcel);*/
 
         List<Trip> GetTruckTrips(string plateNumber, DateTime startDate, DateTime endDate);
     }
