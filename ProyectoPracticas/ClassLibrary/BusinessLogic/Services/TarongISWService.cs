@@ -68,8 +68,6 @@ namespace TarongISW.Services
         }
         public void AddPermanent(Permanent perm)    //Caso de Uso 1
         {
-            try
-            {
                 if(perm.Hired.LastActiveContract() != null)
                 {
                     throw new ServiceException("Active contract");
@@ -78,12 +76,9 @@ namespace TarongISW.Services
                     dal.Insert<Permanent>(perm);
                     dal.Commit();
                 }
-            } catch (ServiceException) { throw new ServiceException("Infomation not valid"); }
         }
         public void AddTemporary(Temporary temp)    //Caso de Uso 1
         {
-            try
-            {
                 if (temp.Hired.LastActiveContract() != null)
                 {
                     throw new ServiceException("Active contract");
@@ -93,10 +88,6 @@ namespace TarongISW.Services
                     dal.Insert<Temporary>(temp);
                     dal.Commit();
                 }
-            } catch (ServiceException)
-            {
-                throw new ServiceException("Infomation not valid");
-            }
         }
         public List<Contract> GetAllContracts() 
         {
@@ -109,21 +100,23 @@ namespace TarongISW.Services
 
         public void AddGroup(Group group)
         {
-            if (dal.GetWhere<Group>(x => x.Parcel == group.Parcel && x.Date == group.Date) != null)
-            {
-                throw new ServiceException("Another group already");
+            if (group.Members.Except(dal.GetWhere<Contract>(x => x.Groups.Any(y => y.Date == group.Date))).Count() == group.Members.Count()) {
+                throw new ServiceException("Un miembro ya existe en otro grupo ese dia");
             }
-            if (group.Members.Distinct().Count() != group.Members.Count())
+            else if (dal.GetWhere<Group>(x => x.Parcel.CadastralReference == group.Parcel.CadastralReference).Any())
             {
-                throw new ServiceException("Member repeated");
+                if (!dal.GetWhere<Group>(x => x.Date == group.Date).Any())
+                {
+                    dal.Insert<Group>(group);
+                    dal.Commit();
+                }
+                else throw new ServiceException("Ya existe para el dia: " + group.Date + " un grupo asignado en la parcela: " + group.Parcel.CadastralReference);
             }
-            if (group.Members.Except(dal.GetWhere<Contract>(x => x.Groups.Any(y => y.Date == group.Date))).Count() == group.Members.Count())
+            else
             {
-                throw new ServiceException("Memebr already in other group");
+                dal.Insert<Group>(group);
+                dal.Commit();
             }
-            dal.Insert<Group>(group);
-            Commit();
-
         }
         public List<Group> GetAllGroups()
         {

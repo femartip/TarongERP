@@ -25,6 +25,9 @@ namespace TarongISW.Entities
         }
         public void AddMember(Contract c)
         {
+            if (Members.ToList().Contains(c)) {
+                throw new Exception("Miembro ya en la lista");
+            }
             this.Members.Add(c);
         }
     }
