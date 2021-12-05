@@ -70,14 +70,7 @@ namespace TarongISW.Services
         {
             try
             {
-                if (dal.GetById<Person>(perm.Hired.Id) == null)
-                {
-                    AddPerson(perm.Hired);
-                    dal.Insert<Permanent>(perm);
-                    dal.Commit();
-
-                } 
-                else if(perm.Hired.LastActiveContract() != null)
+                if(perm.Hired.LastActiveContract() != null)
                 {
                     throw new ServiceException("Active contract");
                 } else
@@ -91,14 +84,7 @@ namespace TarongISW.Services
         {
             try
             {
-                if (dal.GetById<Person>(temp.Hired.Id) == null)
-                {
-                    AddPerson(temp.Hired);
-                    dal.Insert<Temporary>(temp);
-                    dal.Commit();
-
-                }
-                else if (temp.Hired.LastActiveContract() != null)
+                if (temp.Hired.LastActiveContract() != null)
                 {
                     throw new ServiceException("Active contract");
                 }
