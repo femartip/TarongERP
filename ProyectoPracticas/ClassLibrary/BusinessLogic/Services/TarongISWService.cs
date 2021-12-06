@@ -34,10 +34,10 @@ namespace TarongISW.Services
             return dal.GetAll<Contract>().ToList();
         }
         public void AddPermanent(Permanent perm)    //Caso de Uso 1
-        {
+        {   
             if (perm.Hired.LastActiveContract() != null)
             {
-                throw new ServiceException("Active contract");
+                throw new ServiceException(perm.Id + " already has an active contract");
             }
             else
             {
@@ -49,7 +49,7 @@ namespace TarongISW.Services
         {
             if (temp.Hired.LastActiveContract() != null)
             {
-                throw new ServiceException("Active contract");
+                throw new ServiceException(temp.Id + " already has an active contract");
             }
             else
             {
@@ -73,7 +73,7 @@ namespace TarongISW.Services
                 dal.Insert<Person>(person);
                 Commit();
             }
-            else throw new ServiceException("Persona con identificador " + person.Id + " ya existe.");
+            else throw new ServiceException("Person with Id: " + person.Id + " already exists.");
         }
         #endregion
 
@@ -86,7 +86,7 @@ namespace TarongISW.Services
         public void AddGroup(Group group)
         {
             if (group.Members.Except(dal.GetWhere<Contract>(x => x.Groups.Any(y => y.Date == group.Date))).Count() == group.Members.Count()) {
-                throw new ServiceException("Un miembro ya existe en otro grupo ese dia");
+                throw new ServiceException("A member already exists on that date.");
             }
             else if (dal.GetWhere<Group>(x => x.Parcel.CadastralReference == group.Parcel.CadastralReference).Any())
             {
@@ -95,7 +95,7 @@ namespace TarongISW.Services
                     dal.Insert<Group>(group);
                     dal.Commit();
                 }
-                else throw new ServiceException("Ya existe para el dia: " + group.Date + " un grupo asignado en la parcela: " + group.Parcel.CadastralReference);
+                else throw new ServiceException("A group is already assigned on date: " + group.Date + " on the parcel: " + group.Parcel.CadastralReference);
             }
             else
             {
@@ -110,7 +110,7 @@ namespace TarongISW.Services
         {
             if (dal.GetById<Truck>(id) != null)
             {
-                return dal.GetById<Truck>(id);
+                throw new ServiceException("A truck with id: " + id + " does not exist.");
             }
             else { return dal.GetById<Truck>(id); }
         }
@@ -120,7 +120,7 @@ namespace TarongISW.Services
         }
         #endregion
 
-        #region Asignar cajón a viaje
+        #region Añadir cajón a viaje
         public void AddCrate(Crate crate) //Caso de uso 5
         {
             if (crate.Group.Members.Contains<Contract>(crate.Contract)) // Ese miembro pertenece a la cuadrilla
@@ -130,9 +130,9 @@ namespace TarongISW.Services
                     dal.Insert<Crate>(crate);
                     dal.Commit();
                 }
-                else { throw new ServiceException("La caja:" + crate.Id + "sobrepasa la MMA del camión"); }
+                else { throw new ServiceException("The crate:" + crate.Id + "surpass truck's MMA."); }
             }
-            else { throw new ServiceException("La persona:" + crate.Contract.Hired.Name + " no pertenece al grupo"); }
+            else { throw new ServiceException("The person:" + crate.Contract.Hired.Name + " is not a part of the group."); }
         }
 
         public List<Crate> GetAllCrates()
@@ -149,7 +149,7 @@ namespace TarongISW.Services
                 dal.Insert<Parcel>(parcel);
                 Commit();
             }
-            else throw new ServiceException("Paquete con nombre " + parcel.Name + " ya existe.");
+            else throw new ServiceException("Parcel with name: " + parcel.Name + " already exists.");
         }
 
         public void AddTruck(Truck truck)
@@ -160,7 +160,7 @@ namespace TarongISW.Services
                 dal.Insert<Truck>(truck);
                 Commit();
             }
-            else throw new ServiceException("Camión con Id " + truck.Id + " ya existe.");
+            else throw new ServiceException("Truck with Id: " + truck.Id + " already exists.");
         }
 
         public List<Group> GetAllGroups()
@@ -168,7 +168,6 @@ namespace TarongISW.Services
             return new List<Group>(dal.GetAll<Group>());
         }
         
-        //No se si estos métodos son necesarios (Sanfe)
         public List<Truck> GetAllTrucks()
         {
             return dal.GetAll<Truck>().ToList(); 
