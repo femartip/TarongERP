@@ -56,11 +56,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="TarongISWApp.cs">
+    <Compile Include="Froms\NewContractForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="TarongISWApp.Designer.cs">
-      <DependentUpon>TarongISWApp.cs</DependentUpon>
+    <Compile Include="Froms\NewContractForm.Designer.cs">
+      <DependentUpon>NewContractForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -73,8 +73,8 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="TarongISWApp.resx">
-      <DependentUpon>TarongISWApp.cs</DependentUpon>
+    <EmbeddedResource Include="Froms\NewContractForm.resx">
+      <DependentUpon>NewContractForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
