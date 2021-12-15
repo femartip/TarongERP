@@ -82,6 +82,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Forms\GetTruckTrips.resx">
+      <DependentUpon>GetTruckTrips.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\TarongISWApp.resx">
       <DependentUpon>TarongISWApp.cs</DependentUpon>
     </EmbeddedResource>
