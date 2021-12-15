@@ -56,27 +56,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Froms\NewContractForm.cs">
+    <Compile Include="Forms\NewContractForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Froms\NewContractForm.Designer.cs">
+    <Compile Include="Forms\NewContractForm.Designer.cs">
       <DependentUpon>NewContractForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Froms\TarongISWApp.cs">
+    <Compile Include="Forms\TarongISWApp.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Froms\TarongISWApp.Designer.cs">
+    <Compile Include="Forms\TarongISWApp.Designer.cs">
       <DependentUpon>TarongISWApp.cs</DependentUpon>
     </Compile>
-    <Compile Include="Froms\TarongISWFormBase.cs">
+    <Compile Include="Forms\TarongISWFormBase.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Froms\TarongISWFormBase.Designer.cs">
+    <Compile Include="Forms\TarongISWFormBase.Designer.cs">
       <DependentUpon>TarongISWFormBase.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Froms\TarongISWApp.resx">
+    <EmbeddedResource Include="Forms\TarongISWApp.resx">
       <DependentUpon>TarongISWApp.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -88,7 +88,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Froms\NewContractForm.resx">
+    <EmbeddedResource Include="Forms\NewContractForm.resx">
       <DependentUpon>NewContractForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
