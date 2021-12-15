@@ -49,8 +49,8 @@ namespace TarongISW.Presentation
             this.label5 = new System.Windows.Forms.Label();
             this.textBoxBankAccount = new System.Windows.Forms.TextBox();
             this.textBoxSNN = new System.Windows.Forms.TextBox();
-            this.textBoxHired = new System.Windows.Forms.TextBox();
             this.dateTimePickerInitDate = new System.Windows.Forms.DateTimePicker();
+            this.comboBoxHired = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // addButton
@@ -129,14 +129,6 @@ namespace TarongISW.Presentation
             this.textBoxSNN.Size = new System.Drawing.Size(137, 22);
             this.textBoxSNN.TabIndex = 9;
             // 
-            // textBoxHired
-            // 
-            this.textBoxHired.Location = new System.Drawing.Point(125, 156);
-            this.textBoxHired.Name = "textBoxHired";
-            this.textBoxHired.Size = new System.Drawing.Size(137, 22);
-            this.textBoxHired.TabIndex = 10;
-            //this.textBoxHired.TextChanged += new System.EventHandler(this.textBox5_TextChanged);
-            // 
             // dateTimePickerInitDate
             // 
             this.dateTimePickerInitDate.Location = new System.Drawing.Point(125, 196);
@@ -144,13 +136,24 @@ namespace TarongISW.Presentation
             this.dateTimePickerInitDate.Size = new System.Drawing.Size(230, 22);
             this.dateTimePickerInitDate.TabIndex = 11;
             // 
-            // TarongISWApp
+            // comboBoxHired
+            // 
+            this.comboBoxHired.FormattingEnabled = true;
+            this.comboBoxHired.Items.AddRange(new object[] {
+            "Temporary",
+            "Permanent"});
+            this.comboBoxHired.Location = new System.Drawing.Point(125, 156);
+            this.comboBoxHired.Name = "comboBoxHired";
+            this.comboBoxHired.Size = new System.Drawing.Size(137, 24);
+            this.comboBoxHired.TabIndex = 12;
+            // 
+            // NewContractFrom
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(370, 314);
+            this.Controls.Add(this.comboBoxHired);
             this.Controls.Add(this.dateTimePickerInitDate);
-            this.Controls.Add(this.textBoxHired);
             this.Controls.Add(this.textBoxSNN);
             this.Controls.Add(this.textBoxBankAccount);
             this.Controls.Add(this.label5);
@@ -160,7 +163,7 @@ namespace TarongISW.Presentation
             this.Controls.Add(this.textBoxDNI);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.addButton);
-            this.Name = "TarongISWApp";
+            this.Name = "NewContractFrom";
             this.Text = "New Contract";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -178,8 +181,8 @@ namespace TarongISW.Presentation
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox textBoxBankAccount;
         private System.Windows.Forms.TextBox textBoxSNN;
-        private System.Windows.Forms.TextBox textBoxHired;
         private System.Windows.Forms.DateTimePicker dateTimePickerInitDate;
+        private System.Windows.Forms.ComboBox comboBoxHired;
     }
 }
 
