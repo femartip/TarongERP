@@ -56,6 +56,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\GetTruckTrips.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\GetTruckTrips.Designer.cs">
+      <DependentUpon>GetTruckTrips.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\NewContractForm.cs">
       <SubType>Form</SubType>
     </Compile>
