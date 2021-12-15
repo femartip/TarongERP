@@ -6,7 +6,7 @@ using System.Windows.Forms;
 using TarongISW.Persistence;
 using TarongISW.Services;
 
-namespace TarongISWGUI
+namespace TarongISW.Presentation
 {
     static class Program
     {

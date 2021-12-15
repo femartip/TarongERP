@@ -1,19 +1,19 @@
 ﻿
 using TarongISW.Services;
 
-namespace TarongISWGUI
+namespace TarongISW.Presentation
 {
-    public partial class TarongISWApp
+    public partial class NewContractFrom
     {
         private ITarongISWService service;
 
-        
-        public TarongISWApp(ITarongISWService service)
+
+        public NewContractFrom(ITarongISWService service)
         {
             InitializeComponent();
             this.service = service;
         }
-        
+
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -135,7 +135,7 @@ namespace TarongISWGUI
             this.textBoxHired.Name = "textBoxHired";
             this.textBoxHired.Size = new System.Drawing.Size(137, 22);
             this.textBoxHired.TabIndex = 10;
-            this.textBoxHired.TextChanged += new System.EventHandler(this.textBox5_TextChanged);
+            //this.textBoxHired.TextChanged += new System.EventHandler(this.textBox5_TextChanged);
             // 
             // dateTimePickerInitDate
             // 
