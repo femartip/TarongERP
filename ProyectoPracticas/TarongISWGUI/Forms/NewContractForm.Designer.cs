@@ -3,12 +3,12 @@ using TarongISW.Services;
 
 namespace TarongISW.Presentation
 {
-    public partial class NewContractFrom
+    public partial class NewContractForm
     {
         private ITarongISWService service;
 
 
-        public NewContractFrom(ITarongISWService service)
+        public NewContractForm(ITarongISWService service)
         {
             InitializeComponent();
             this.service = service;

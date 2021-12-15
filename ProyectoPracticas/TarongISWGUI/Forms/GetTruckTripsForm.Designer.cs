@@ -1,7 +1,7 @@
 ﻿using TarongISW.Services;
 namespace TarongISW.Presentation
 {
-    partial class GetTruckTrips
+    partial class GetTruckTripsForm
     {
         /// <summary>
         /// Required designer variable.
@@ -11,7 +11,7 @@ namespace TarongISW.Presentation
         private ITarongISWService service;
 
 
-        public GetTruckTrips(ITarongISWService service)
+        public GetTruckTripsForm(ITarongISWService service)
         {
             InitializeComponent();
             this.service = service;

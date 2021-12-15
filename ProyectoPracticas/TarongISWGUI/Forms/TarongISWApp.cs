@@ -13,12 +13,21 @@ namespace TarongISW.Presentation
 {
     public partial class TarongISWApp : TarongISWFormBase
     {
-        private NewContractFrom newContractFrom;
+        private NewContractForm newContractForm;
+
+        private NewPersonForm newPersonForm;
+
+        private GetTruckTripsForm getTruckTripsForm;
+
+        private AddCrateToTripForm addCrateToTripForm;
 
         public TarongISWApp(ITarongISWService service) : base(service)
         {
             InitializeComponent();
-            newContractFrom = new NewContractFrom(service);
+            newContractForm = new NewContractForm(service);
+            newPersonForm = new NewPersonForm(service);
+            getTruckTripsForm = new GetTruckTripsForm(service);
+            addCrateToTripForm = new AddCrateToTripForm(service);
         }
 
         private void exitButton(object sender, EventArgs e)
@@ -28,7 +37,22 @@ namespace TarongISW.Presentation
 
         private void goToNewContractForm(object sender, EventArgs e)
         {
-            newContractFrom.ShowDialog();
+            newContractForm.ShowDialog();
+        }
+
+        private void goNewPersonForm(object sender, EventArgs e)
+        {
+            newPersonForm.ShowDialog();
+        }
+
+        private void goGetTruckTrips(object sender, EventArgs e)
+        {
+            getTruckTripsForm.ShowDialog();
+        }
+
+        private void goAddCrateToTrip(object sender, EventArgs e)
+        {
+            addCrateToTripForm.ShowDialog();
         }
     }
 }

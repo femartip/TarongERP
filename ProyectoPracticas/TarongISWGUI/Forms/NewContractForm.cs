@@ -11,9 +11,9 @@ using TarongISW.Entities;
 
 namespace TarongISW.Presentation
 {
-    public partial class NewContractFrom : TarongISWFormBase
+    public partial class NewContractForm : TarongISWFormBase
     {
-        public NewContractFrom() : base()
+        public NewContractForm() : base()
         {
             InitializeComponent();
         }

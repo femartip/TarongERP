@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace TarongISW.Presentation
 {
-    public partial class GetTruckTrips : TarongISWFormBase
+    public partial class GetTruckTripsForm : TarongISWFormBase
     {
-        public GetTruckTrips() : base()
+        public GetTruckTripsForm() : base()
         {
             InitializeComponent();
         }
