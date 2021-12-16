@@ -18,9 +18,25 @@ namespace TarongISW.Presentation
         public NewContractForm(ITarongISWService service) : base(service)
         {
             InitializeComponent();
-            //newPersonFormTemp = new NewPersonForm(this, service);
             newPersonForm = new NewPersonForm(this, service);
+            textBoxBankAccount.Enabled = false;
+            textBoxSSN.Enabled = false;
+            textBoxSalary.Enabled = false;
+            dateTimePickerFinalDate.Enabled = false;
+            dateTimePickerInitDate.Enabled = false;
+            addButtonTemp.Enabled = false;
+            temp.Enabled = false;
+            perm.Enabled = false;
         }
+
+        protected void DNIOk() {
+            textBoxBankAccount.Enabled = true;
+            textBoxSSN.Enabled = true;
+            dateTimePickerInitDate.Enabled = true;
+            temp.Enabled = true;
+            perm.Enabled = true;
+        }
+
 
         protected virtual bool fieldsOKTemp()
         {
@@ -33,9 +49,9 @@ namespace TarongISW.Presentation
         protected virtual bool fieldsOKPerm()
         {
             return
-                !string.IsNullOrEmpty(textBoxDNI2.Text) &&
-                !string.IsNullOrEmpty(textBoxBankAccount2.Text) &&
-                !string.IsNullOrEmpty(textBoxSSN2.Text) &&
+                !string.IsNullOrEmpty(textBoxDNI.Text) &&
+                !string.IsNullOrEmpty(textBoxBankAccount.Text) &&
+                !string.IsNullOrEmpty(textBoxSSN.Text) &&
                 !string.IsNullOrEmpty(textBoxSalary.Text);
         }
 
@@ -51,7 +67,8 @@ namespace TarongISW.Presentation
                     else
                     {
                         Person p = service.FindPersonById(textBoxDNI.Text);
-                        Temporary temp = new Temporary(textBoxBankAccount.Text, dateTimePickerInitDate.Value, textBoxSSN.Text, p, dateTimePickerFinalDate.Value);
+                        Temporary temp = new Temporary(textBoxBankAccount.Text, dateTimePickerInitDate.Value, textBoxSSN.Text, p);
+                        temp.FinalDate = dateTimePickerFinalDate.Value;
                         try
                         {
                             service.AddTemporary(temp);
@@ -68,43 +85,44 @@ namespace TarongISW.Presentation
                 }
             }
 
-        private void addButtonPerm_Click(object sender, EventArgs e)
-        {
-            if (fieldsOKPerm())
-            {
-                double result;
-                if (service.FindPersonById(textBoxDNI2.Text) == null)
-                {
-                    MessageBox.Show("Person with this DNI doesn not exists", "Error");
-                    //Call Alta Persona 
-                } 
-                if (!double.TryParse(textBoxSalary.Text, out result)) {
-                    MessageBox.Show("Slalary must be a number");
-                }
-                else
-                {
-                    Person p = service.FindPersonById(textBoxDNI2.Text);
-                    Permanent perm = new Permanent(textBoxBankAccount2.Text, dateTimePickerInitDate2.Value, textBoxSSN2.Text, p, double.Parse(textBoxSalary.Text));
-                    try
-                    {
-                        service.AddPermanent(perm);
-                        this.Close();
-                    }
-                    catch (Exception error) {
-                        MessageBox.Show(error.ToString(), "Error");
-                    }
-                }
-            }
-            else
-            {
-                MessageBox.Show("Missing information", "Error");
-            }
-        }
+        
 
         private void goAddPerson_Click(object sender, EventArgs e)
         {
             newPersonForm.Clear();
             newPersonForm.ShowDialog();
+        }
+
+        private void DNIValido(object sender, EventArgs e)
+        {
+            if (service.FindPersonById(textBoxDNI.Text) != null) {
+                DNIOk();
+            }
+        }
+
+        private void isTemporary(object sender, EventArgs e)
+        {
+            if (temp.Checked.Equals(true))
+            {
+                addButtonTemp.Enabled = true;
+                
+            }
+            else {
+                dateTimePickerFinalDate.Enabled = false;
+            }
+        }
+
+        private void isPermanent(object sender, EventArgs e)
+        {
+            if (perm.Checked.Equals(true))
+            {
+                addButtonTemp.Enabled = true;
+                textBoxSalary.Enabled = true;
+            }
+            else
+            {
+                dateTimePickerFinalDate.Enabled = false;
+            }
         }
     }
     
