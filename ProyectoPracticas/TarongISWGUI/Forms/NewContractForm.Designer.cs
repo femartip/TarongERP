@@ -48,6 +48,7 @@ namespace TarongISW.Presentation
             this.label5 = new System.Windows.Forms.Label();
             this.temp = new System.Windows.Forms.RadioButton();
             this.perm = new System.Windows.Forms.RadioButton();
+            this.buttonParcel = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // addButtonTemp
@@ -65,7 +66,7 @@ namespace TarongISW.Presentation
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(12, 22);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 17);
+            this.label1.Size = new System.Drawing.Size(33, 16);
             this.label1.TabIndex = 1;
             this.label1.Text = "DNI:";
             // 
@@ -75,14 +76,13 @@ namespace TarongISW.Presentation
             this.textBoxDNI.Name = "textBoxDNI";
             this.textBoxDNI.Size = new System.Drawing.Size(137, 22);
             this.textBoxDNI.TabIndex = 2;
-            this.textBoxDNI.TextChanged += new System.EventHandler(this.DNIValido);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(12, 100);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(99, 17);
+            this.label2.Size = new System.Drawing.Size(92, 16);
             this.label2.TabIndex = 3;
             this.label2.Text = "Bank Account:";
             // 
@@ -91,7 +91,7 @@ namespace TarongISW.Presentation
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(12, 220);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(78, 17);
+            this.label3.Size = new System.Drawing.Size(72, 16);
             this.label3.TabIndex = 4;
             this.label3.Text = "Initial Date:";
             // 
@@ -100,7 +100,7 @@ namespace TarongISW.Presentation
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(16, 143);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(40, 17);
+            this.label4.Size = new System.Drawing.Size(38, 16);
             this.label4.TabIndex = 5;
             this.label4.Text = "SSN:";
             // 
@@ -127,7 +127,7 @@ namespace TarongISW.Presentation
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(327, 22);
+            this.button2.Location = new System.Drawing.Point(331, 15);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(94, 23);
             this.button2.TabIndex = 15;
@@ -147,7 +147,7 @@ namespace TarongISW.Presentation
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(12, 260);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(76, 17);
+            this.label6.Size = new System.Drawing.Size(71, 16);
             this.label6.TabIndex = 13;
             this.label6.Text = "Final Date:";
             // 
@@ -163,7 +163,7 @@ namespace TarongISW.Presentation
             this.label10.AutoSize = true;
             this.label10.Location = new System.Drawing.Point(12, 181);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(52, 17);
+            this.label10.Size = new System.Drawing.Size(49, 16);
             this.label10.TabIndex = 8;
             this.label10.Text = "Salary:";
             // 
@@ -172,7 +172,7 @@ namespace TarongISW.Presentation
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(12, 62);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(44, 17);
+            this.label5.Size = new System.Drawing.Size(42, 16);
             this.label5.TabIndex = 16;
             this.label5.Text = "Type:";
             // 
@@ -181,7 +181,7 @@ namespace TarongISW.Presentation
             this.temp.AutoSize = true;
             this.temp.Location = new System.Drawing.Point(131, 62);
             this.temp.Name = "temp";
-            this.temp.Size = new System.Drawing.Size(98, 21);
+            this.temp.Size = new System.Drawing.Size(95, 20);
             this.temp.TabIndex = 17;
             this.temp.TabStop = true;
             this.temp.Text = "Temporary";
@@ -193,18 +193,29 @@ namespace TarongISW.Presentation
             this.perm.AutoSize = true;
             this.perm.Location = new System.Drawing.Point(234, 62);
             this.perm.Name = "perm";
-            this.perm.Size = new System.Drawing.Size(98, 21);
+            this.perm.Size = new System.Drawing.Size(93, 20);
             this.perm.TabIndex = 18;
             this.perm.TabStop = true;
             this.perm.Text = "Permanent";
             this.perm.UseVisualStyleBackColor = true;
             this.perm.Click += new System.EventHandler(this.isPermanent);
             // 
+            // buttonParcel
+            // 
+            this.buttonParcel.Location = new System.Drawing.Point(287, 18);
+            this.buttonParcel.Name = "buttonParcel";
+            this.buttonParcel.Size = new System.Drawing.Size(26, 23);
+            this.buttonParcel.TabIndex = 19;
+            this.buttonParcel.Text = "✓";
+            this.buttonParcel.UseVisualStyleBackColor = true;
+            this.buttonParcel.Click += new System.EventHandler(this.DNIValido);
+            // 
             // NewContractForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(478, 344);
+            this.Controls.Add(this.buttonParcel);
             this.Controls.Add(this.perm);
             this.Controls.Add(this.temp);
             this.Controls.Add(this.label5);
@@ -248,6 +259,7 @@ namespace TarongISW.Presentation
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.RadioButton temp;
         private System.Windows.Forms.RadioButton perm;
+        private System.Windows.Forms.Button buttonParcel;
     }
 }
 

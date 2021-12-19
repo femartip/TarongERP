@@ -95,8 +95,11 @@ namespace TarongISW.Presentation
 
         private void DNIValido(object sender, EventArgs e)
         {
-            if (service.FindPersonById(textBoxDNI.Text) != null) {
+            try {
+                service.FindPersonById(textBoxDNI.Text);
                 DNIOk();
+            } catch (Exception error) {
+                MessageBox.Show("DNI does not exists", "Error");
             }
         }
 
