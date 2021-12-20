@@ -1,4 +1,4 @@
-﻿using TarongISW.Services;
+﻿
 namespace TarongISW.Presentation
 {
     partial class NewGroupForm
@@ -7,13 +7,6 @@ namespace TarongISW.Presentation
         /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
-        private ITarongISWService service;
-
-        public NewGroupForm(ITarongISWService service)
-        {
-            InitializeComponent();
-            this.service = service;
-        }
 
         /// <summary>
         /// Clean up any resources being used.
@@ -36,68 +29,150 @@ namespace TarongISW.Presentation
         /// </summary>
         private void InitializeComponent()
         {
-            this.Parcela_label = new System.Windows.Forms.Label();
-            this.Miembros_label = new System.Windows.Forms.Label();
-            this.Miembros_listBox = new System.Windows.Forms.ListBox();
-            this.Parcela_textBox = new System.Windows.Forms.TextBox();
+            this.Parcel_text = new System.Windows.Forms.Label();
+            this.Parcel_groupBox = new System.Windows.Forms.GroupBox();
+            this.Parcela_button = new System.Windows.Forms.Button();
+            this.Parcel_textBox = new System.Windows.Forms.TextBox();
+            this.Members_groupBox = new System.Windows.Forms.GroupBox();
+            this.CrearCuadrilla_button = new System.Windows.Forms.Button();
+            this.Members_text = new System.Windows.Forms.Label();
+            this.NewMember_button = new System.Windows.Forms.Button();
+            this.Members_ListBox = new System.Windows.Forms.CheckedListBox();
+            this.Parcel_groupBox.SuspendLayout();
+            this.Members_groupBox.SuspendLayout();
             this.SuspendLayout();
             // 
-            // Parcela_label
+            // Parcel_text
             // 
-            this.Parcela_label.AutoSize = true;
-            this.Parcela_label.Location = new System.Drawing.Point(90, 97);
-            this.Parcela_label.Name = "Parcela_label";
-            this.Parcela_label.Size = new System.Drawing.Size(55, 16);
-            this.Parcela_label.TabIndex = 0;
-            this.Parcela_label.Text = "Parcela";
+            this.Parcel_text.AutoSize = true;
+            this.Parcel_text.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F);
+            this.Parcel_text.Location = new System.Drawing.Point(27, 20);
+            this.Parcel_text.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.Parcel_text.Name = "Parcel_text";
+            this.Parcel_text.Size = new System.Drawing.Size(77, 16);
+            this.Parcel_text.TabIndex = 0;
+            this.Parcel_text.Text = "Parcela (id)";
             // 
-            // Miembros_label
+            // Parcel_groupBox
             // 
-            this.Miembros_label.AutoSize = true;
-            this.Miembros_label.Location = new System.Drawing.Point(93, 162);
-            this.Miembros_label.Name = "Miembros_label";
-            this.Miembros_label.Size = new System.Drawing.Size(68, 16);
-            this.Miembros_label.TabIndex = 1;
-            this.Miembros_label.Text = "Miembros";
+            this.Parcel_groupBox.Controls.Add(this.Parcela_button);
+            this.Parcel_groupBox.Controls.Add(this.Parcel_textBox);
+            this.Parcel_groupBox.Controls.Add(this.Parcel_text);
+            this.Parcel_groupBox.Location = new System.Drawing.Point(16, 37);
+            this.Parcel_groupBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Parcel_groupBox.Name = "Parcel_groupBox";
+            this.Parcel_groupBox.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Parcel_groupBox.Size = new System.Drawing.Size(499, 60);
+            this.Parcel_groupBox.TabIndex = 2;
+            this.Parcel_groupBox.TabStop = false;
             // 
-            // Miembros_listBox
+            // Parcela_button
             // 
-            this.Miembros_listBox.FormattingEnabled = true;
-            this.Miembros_listBox.ItemHeight = 16;
-            this.Miembros_listBox.Location = new System.Drawing.Point(211, 162);
-            this.Miembros_listBox.Name = "Miembros_listBox";
-            this.Miembros_listBox.Size = new System.Drawing.Size(331, 148);
-            this.Miembros_listBox.TabIndex = 2;
+            this.Parcela_button.Location = new System.Drawing.Point(380, 16);
+            this.Parcela_button.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Parcela_button.Name = "Parcela_button";
+            this.Parcela_button.Size = new System.Drawing.Size(111, 28);
+            this.Parcela_button.TabIndex = 2;
+            this.Parcela_button.Text = "Buscar";
+            this.Parcela_button.UseVisualStyleBackColor = true;
+            this.Parcela_button.Click += new System.EventHandler(this.Parcela_button_Click);
             // 
-            // Parcela_textBox
+            // Parcel_textBox
             // 
-            this.Parcela_textBox.Location = new System.Drawing.Point(211, 97);
-            this.Parcela_textBox.Name = "Parcela_textBox";
-            this.Parcela_textBox.Size = new System.Drawing.Size(100, 22);
-            this.Parcela_textBox.TabIndex = 3;
+            this.Parcel_textBox.Location = new System.Drawing.Point(137, 18);
+            this.Parcel_textBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Parcel_textBox.Name = "Parcel_textBox";
+            this.Parcel_textBox.Size = new System.Drawing.Size(233, 22);
+            this.Parcel_textBox.TabIndex = 1;
+            this.Parcel_textBox.TextChanged += new System.EventHandler(this.Parcel_textBox_TextChanged);
+            // 
+            // Members_groupBox
+            // 
+            this.Members_groupBox.Controls.Add(this.CrearCuadrilla_button);
+            this.Members_groupBox.Controls.Add(this.Members_text);
+            this.Members_groupBox.Controls.Add(this.NewMember_button);
+            this.Members_groupBox.Controls.Add(this.Members_ListBox);
+            this.Members_groupBox.Location = new System.Drawing.Point(16, 132);
+            this.Members_groupBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Members_groupBox.Name = "Members_groupBox";
+            this.Members_groupBox.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Members_groupBox.Size = new System.Drawing.Size(499, 338);
+            this.Members_groupBox.TabIndex = 3;
+            this.Members_groupBox.TabStop = false;
+            this.Members_groupBox.Visible = false;
+            // 
+            // CrearCuadrilla_button
+            // 
+            this.CrearCuadrilla_button.Location = new System.Drawing.Point(380, 303);
+            this.CrearCuadrilla_button.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.CrearCuadrilla_button.Name = "CrearCuadrilla_button";
+            this.CrearCuadrilla_button.Size = new System.Drawing.Size(111, 28);
+            this.CrearCuadrilla_button.TabIndex = 5;
+            this.CrearCuadrilla_button.Text = "Crear Cuadrilla";
+            this.CrearCuadrilla_button.UseVisualStyleBackColor = true;
+            this.CrearCuadrilla_button.Click += new System.EventHandler(this.CrearCuadrilla_button_Click);
+            // 
+            // Members_text
+            // 
+            this.Members_text.AutoSize = true;
+            this.Members_text.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F);
+            this.Members_text.Location = new System.Drawing.Point(27, 25);
+            this.Members_text.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.Members_text.Name = "Members_text";
+            this.Members_text.Size = new System.Drawing.Size(68, 16);
+            this.Members_text.TabIndex = 2;
+            this.Members_text.Text = "Miembros";
+            // 
+            // NewMember_button
+            // 
+            this.NewMember_button.Location = new System.Drawing.Point(380, 23);
+            this.NewMember_button.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.NewMember_button.Name = "NewMember_button";
+            this.NewMember_button.Size = new System.Drawing.Size(111, 48);
+            this.NewMember_button.TabIndex = 1;
+            this.NewMember_button.Text = "Nuevo Miembro";
+            this.NewMember_button.UseVisualStyleBackColor = true;
+            this.NewMember_button.Click += new System.EventHandler(this.NewMember_button_Click);
+            // 
+            // Members_ListBox
+            // 
+            this.Members_ListBox.FormattingEnabled = true;
+            this.Members_ListBox.Location = new System.Drawing.Point(139, 23);
+            this.Members_ListBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Members_ListBox.Name = "Members_ListBox";
+            this.Members_ListBox.Size = new System.Drawing.Size(232, 242);
+            this.Members_ListBox.TabIndex = 0;
             // 
             // NewGroupForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.Parcela_textBox);
-            this.Controls.Add(this.Miembros_listBox);
-            this.Controls.Add(this.Miembros_label);
-            this.Controls.Add(this.Parcela_label);
+            this.ClientSize = new System.Drawing.Size(557, 485);
+            this.Controls.Add(this.Members_groupBox);
+            this.Controls.Add(this.Parcel_groupBox);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "NewGroupForm";
-            this.Text = "NewGroupForm";
-            this.Load += new System.EventHandler(this.carga);
+            this.Text = "AltaCuadrillaForm";
+            this.Load += new System.EventHandler(this.NewGroupForm_Load);
+            this.Parcel_groupBox.ResumeLayout(false);
+            this.Parcel_groupBox.PerformLayout();
+            this.Members_groupBox.ResumeLayout(false);
+            this.Members_groupBox.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Label Parcela_label;
-        private System.Windows.Forms.Label Miembros_label;
-        private System.Windows.Forms.ListBox Miembros_listBox;
-        private System.Windows.Forms.TextBox Parcela_textBox;
+        private System.Windows.Forms.Label Parcel_text;
+        private System.Windows.Forms.GroupBox Parcel_groupBox;
+        private System.Windows.Forms.GroupBox Members_groupBox;
+        private System.Windows.Forms.Label Members_text;
+        private System.Windows.Forms.Button NewMember_button;
+        private System.Windows.Forms.Button CrearCuadrilla_button;
+        private System.Windows.Forms.ComboBox Parcel_comboBox;
+        private System.Windows.Forms.Button Parcela_button;
+        private System.Windows.Forms.TextBox Parcel_textBox;
+        private System.Windows.Forms.CheckedListBox Members_ListBox;
     }
 }

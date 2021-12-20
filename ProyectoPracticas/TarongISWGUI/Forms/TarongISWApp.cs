@@ -49,10 +49,10 @@ namespace TarongISW.Presentation
 
         void DBInitialization()
         {
-            //service.RemoveAllData();
+            service.RemoveAllData();
 
             Console.WriteLine("INITIALIZATING DB...");
-            /*
+            
             Person p1;
             Permanent c;
             p1 = new Person("12345678Z", "Juan Abelló");
@@ -63,11 +63,11 @@ namespace TarongISW.Presentation
             service.AddPerson(p1);
             p1 = new Person("34567890V", "Junta de Andalucía");
             service.AddPerson(p1);
-            */
+            
             
             
 
-            /*
+            
             Parcel parcel = new Parcel("1234567AB9999C0001DE", "El Lobillo, Alhambra (Ciudad Real)", Product.Orange, 10000, p1);
             service.AddParcel(parcel);
             parcel = new Parcel("7654321AB9999C0001DE", "Valdepuercas, Alia (Cáceres)", Product.Avocado, 18000, p1);
@@ -81,7 +81,7 @@ namespace TarongISW.Presentation
             service.AddTruck(t);
             t = new Truck("1234LKP", 18000, 3660);
             service.AddTruck(t);
-            */
+            
 
         }
     }
