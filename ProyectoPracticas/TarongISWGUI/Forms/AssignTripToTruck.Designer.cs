@@ -1,5 +1,4 @@
-﻿
-namespace TarongISW.Presentation
+﻿namespace TarongISW.Presentation
 {
     partial class AssignTripToTruckForm
     {
@@ -7,7 +6,6 @@ namespace TarongISW.Presentation
         /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
-
         /// <summary>
         /// Clean up any resources being used.
         /// </summary>
@@ -20,9 +18,7 @@ namespace TarongISW.Presentation
             }
             base.Dispose(disposing);
         }
-
         #region Windows Form Designer generated code
-
         /// <summary>
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
@@ -137,11 +133,8 @@ namespace TarongISW.Presentation
             this.Load += new System.EventHandler(this.AssignTripToTruckForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
-
         #endregion
-
         private System.Windows.Forms.TextBox textBoxMatricula;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DateTimePicker dateTimePickerSalida;

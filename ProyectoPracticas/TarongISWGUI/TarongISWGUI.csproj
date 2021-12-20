@@ -56,29 +56,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Forms\GetTruckTripsForm.cs">
+    <Compile Include="Forms\AssignTripToTruck.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\GetTruckTripsForm.Designer.cs">
-      <DependentUpon>GetTruckTripsForm.cs</DependentUpon>
+    <Compile Include="Forms\AssignTripToTruck.Designer.cs">
+      <DependentUpon>AssignTripToTruck.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\AddCrateToTripForm.cs">
+    <Compile Include="Forms\NewGroupForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\AddCrateToTripForm.Designer.cs">
-      <DependentUpon>AddCrateToTripForm.cs</DependentUpon>
+    <Compile Include="Forms\NewGroupForm.Designer.cs">
+      <DependentUpon>NewGroupForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\GetTruckTrips.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\GetTruckTrips.Designer.cs">
+      <DependentUpon>GetTruckTrips.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\NewContractForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\NewContractForm.Designer.cs">
       <DependentUpon>NewContractForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\AssignTripToTruckForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\AssignTripToTruckForm.Designer.cs">
-      <DependentUpon>AssignTripToTruckForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\NewPersonForm.cs">
       <SubType>Form</SubType>
@@ -100,14 +100,11 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Forms\AssignTripToTruckForm.resx">
-      <DependentUpon>AssignTripToTruckForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\GetTruckTrips.resx">
+      <DependentUpon>GetTruckTrips.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\GetTruckTripsForm.resx">
-      <DependentUpon>GetTruckTripsForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\AddCrateToTripForm.resx">
-      <DependentUpon>AddCrateToTripForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\NewGroupForm.resx">
+      <DependentUpon>NewGroupForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\TarongISWApp.resx">
       <DependentUpon>TarongISWApp.cs</DependentUpon>

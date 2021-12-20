@@ -34,10 +34,10 @@ namespace TarongISW.Services
             return dal.GetAll<Contract>().ToList();
         }
         public void AddPermanent(Permanent perm)    //Caso de Uso 1
-        {
+        {   
             if (perm.Hired.LastActiveContract() != null)
             {
-                throw new ServiceException(perm.Hired.Name + " already has an active contract");
+                throw new ServiceException(perm.Id + " already has an active contract");
             }
             else
             {
@@ -49,7 +49,7 @@ namespace TarongISW.Services
         {
             if (temp.Hired.LastActiveContract() != null)
             {
-                throw new ServiceException(temp.Hired.Name + " already has an active contract");
+                throw new ServiceException(temp.Id + " already has an active contract");
             }
             else
             {
@@ -62,11 +62,7 @@ namespace TarongISW.Services
         #region Alta Persona
         public Person FindPersonById(string id) //Caso de uso 2
         {
-            if (dal.GetById<Person>(id) == null)
-            {
-                throw new ServiceException("A person with DNI: " + id + " does not exist.");
-            }
-            else { return dal.GetById<Person>(id); }
+            return dal.GetById<Person>(id);
         }
 
         public void AddPerson(Person person)
@@ -77,7 +73,7 @@ namespace TarongISW.Services
                 dal.Insert<Person>(person);
                 Commit();
             }
-            else throw new ServiceException("Person with DNI: " + person.Id + " already exists.");
+            else throw new ServiceException("Person with Id: " + person.Id + " already exists.");
         }
         #endregion
 
@@ -89,7 +85,10 @@ namespace TarongISW.Services
 
         public void AddGroup(Group group)
         {
-            if (dal.GetWhere<Group>(x => x.Parcel.CadastralReference == group.Parcel.CadastralReference).Any())
+            if (group.Members.Except(dal.GetWhere<Contract>(x => x.Groups.Any(y => y.Date == group.Date))).Count() == group.Members.Count()) {
+                throw new ServiceException("A member already exists on that date.");
+            }
+            else if (dal.GetWhere<Group>(x => x.Parcel.CadastralReference == group.Parcel.CadastralReference).Any())
             {
                 if (!dal.GetWhere<Group>(x => x.Date == group.Date).Any())
                 {
