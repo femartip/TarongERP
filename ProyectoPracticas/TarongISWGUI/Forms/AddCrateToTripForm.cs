@@ -67,6 +67,7 @@ namespace TarongISW.Presentation
                     try
                     {
                         service.AddCrate(caja);
+                        this.Close();
                     }
                     catch (Exception error)
                     {

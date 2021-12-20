@@ -125,17 +125,20 @@ namespace TarongISW.Services
         #region Añadir cajón a viaje
         public void AddCrate(Crate crate) //Caso de uso 5
         {
-            if (crate.Group.Members.Contains<Contract>(crate.Contract)) // Ese miembro pertenece a la cuadrilla
-            {
-                if ((crate.Trip.CarriedWeight + crate.WeightInParcel) < crate.Trip.Truck.MaximunWeight)    // La caja no sobrepasa la MMA
+            if (dal.GetById<Crate>(crate.Id) == null) {
+                if (crate.Group.Members.Contains<Contract>(crate.Contract)) // Ese miembro pertenece a la cuadrilla
                 {
-                    dal.Insert<Crate>(crate);
-                    dal.Commit();
+                    if ((crate.Trip.CarriedWeight + crate.WeightInParcel) < crate.Trip.Truck.MaximunWeight)    // La caja no sobrepasa la MMA
+                    {
+                        dal.Insert<Crate>(crate);
+                        dal.Commit();
+                    }
+                    else { throw new ServiceException("The crate:" + crate.Id + "surpass truck's MMA."); }
                 }
-                else { throw new ServiceException("The crate:" + crate.Id + "surpass truck's MMA."); }
+                else { throw new ServiceException("The person:" + crate.Contract.Hired.Name + " is not a part of the group."); }
             }
-            else { throw new ServiceException("The person:" + crate.Contract.Hired.Name + " is not a part of the group."); }
-        }
+            else { throw new ServiceException("Crate whit Id " + crate.Id + " already exists."); }
+         }
 
         public List<Crate> GetAllCrates()
         {
