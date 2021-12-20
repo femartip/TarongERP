@@ -43,11 +43,6 @@ namespace TarongISW.Presentation
             newGroupForm.ShowDialog();
         }
 
-        private void goToAssignTripToTruckForm(object sender, EventArgs e)
-        {
-            newAssignTripToTruckForm.ShowDialog();
-        }
-
         void DBInitialization()
         {
             service.RemoveAllData();
@@ -142,8 +137,13 @@ namespace TarongISW.Presentation
             service.AddPerson(p2);
             perm = new Permanent("ES9812340100951757864321", DateTime.Today.AddYears(-2), "SSN4433221100", p2, 18000.00);
             service.AddPermanent(perm);
+            */
 
+        }
 
+        private void goToNewAssignTripToTruckForm(object sender, EventArgs e)
+        {
+            newAssignTripToTruckForm.ShowDialog();
         }
     }
 }
