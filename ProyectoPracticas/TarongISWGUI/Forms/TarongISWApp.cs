@@ -43,11 +43,6 @@ namespace TarongISW.Presentation
             newGroupForm.ShowDialog();
         }
 
-        private void goToAssignTripToTruckForm(object sender, EventArgs e)
-        {
-            newAssignTripToTruckForm.ShowDialog();
-        }
-
         void DBInitialization()
         {
             service.RemoveAllData();
@@ -94,6 +89,9 @@ namespace TarongISW.Presentation
             service.AddTruck(t);
             
 
+        private void goToNewAssignTripToTruckForm(object sender, EventArgs e)
+        {
+            newAssignTripToTruckForm.ShowDialog();
         }
     }
 }
