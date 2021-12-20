@@ -52,18 +52,18 @@ namespace TarongISW.Presentation
             //service.RemoveAllData();
 
             Console.WriteLine("INITIALIZATING DB...");
-
+            /*
             Person p1;
-            Contract c;
+            Permanent c;
             p1 = new Person("12345678Z", "Juan Abelló");
             service.AddPerson(p1);
-            c = new Contract("cuentaBanco", DateTime.Today, "12345",p1);
-            service.AddPermanent((Permanent)c);
+            c = new Permanent("cuentaBanco", DateTime.Today, "12345",p1,1200.0);
+            service.AddPermanent(c);
             p1 = new Person("23456789D", "José María Aristrian");
             service.AddPerson(p1);
             p1 = new Person("34567890V", "Junta de Andalucía");
             service.AddPerson(p1);
-
+            */
             
             
 
@@ -83,7 +83,6 @@ namespace TarongISW.Presentation
             service.AddTruck(t);
             */
 
-            Console.WriteLine("DATA CREATED.");
         }
     }
 }
