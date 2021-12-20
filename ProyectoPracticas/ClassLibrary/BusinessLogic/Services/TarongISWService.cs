@@ -34,10 +34,10 @@ namespace TarongISW.Services
             return dal.GetAll<Contract>().ToList();
         }
         public void AddPermanent(Permanent perm)    //Caso de Uso 1
-        {
+        {   
             if (perm.Hired.LastActiveContract() != null)
             {
-                throw new ServiceException(perm.Hired.Name + " already has an active contract");
+                throw new ServiceException(perm.Id + " already has an active contract");
             }
             else
             {
@@ -49,7 +49,7 @@ namespace TarongISW.Services
         {
             if (temp.Hired.LastActiveContract() != null)
             {
-                throw new ServiceException(temp.Hired.Name + " already has an active contract");
+                throw new ServiceException(temp.Id + " already has an active contract");
             }
             else
             {
@@ -62,11 +62,7 @@ namespace TarongISW.Services
         #region Alta Persona
         public Person FindPersonById(string id) //Caso de uso 2
         {
-            if (dal.GetById<Person>(id) == null)
-            {
-                throw new ServiceException("A person with DNI: " + id + " does not exist.");
-            }
-            else { return dal.GetById<Person>(id); }
+            return dal.GetById<Person>(id);
         }
 
         public void AddPerson(Person person)
@@ -77,7 +73,7 @@ namespace TarongISW.Services
                 dal.Insert<Person>(person);
                 Commit();
             }
-            else throw new ServiceException("Person with DNI: " + person.Id + " already exists.");
+            else throw new ServiceException("Person with Id: " + person.Id + " already exists.");
         }
         #endregion
 
@@ -89,21 +85,23 @@ namespace TarongISW.Services
 
         public void AddGroup(Group group)
         {
-            if (dal.GetById<Group>(group.Id) == null)
+            if (group.Members.Except(dal.GetWhere<Contract>(x => x.Groups.Any(y => y.Date == group.Date))).Count() == group.Members.Count()) {
+                throw new ServiceException("A member already exists on that date.");
+            }
+            else if (dal.GetWhere<Group>(x => x.Parcel.CadastralReference == group.Parcel.CadastralReference).Any())
             {
-                foreach (Group gru in GetAllGroups())
+                if (!dal.GetWhere<Group>(x => x.Date == group.Date).Any())
                 {
-                    if (gru.Date == group.Date && gru.Parcel == group.Parcel)
-                    {
-                        throw new ServiceException("There can not be 2 groups in the same day asigned to the same parcel.");
-                    }
-
-                    ICollection<Contract> aux = gru.Members;
+                    dal.Insert<Group>(group);
+                    dal.Commit();
                 }
+                else throw new ServiceException("A group is already assigned on date: " + group.Date + " on the parcel: " + group.Parcel.CadastralReference);
+            }
+            else
+            {
                 dal.Insert<Group>(group);
                 dal.Commit();
             }
-            else throw new ServiceException("Group with Id " + group.Id + " already exists.");
         }
         #endregion
 
@@ -125,20 +123,17 @@ namespace TarongISW.Services
         #region Añadir cajón a viaje
         public void AddCrate(Crate crate) //Caso de uso 5
         {
-            if (dal.GetById<Crate>(crate.Id) == null) {
-                if (crate.Group.Members.Contains<Contract>(crate.Contract)) // Ese miembro pertenece a la cuadrilla
+            if (crate.Group.Members.Contains<Contract>(crate.Contract)) // Ese miembro pertenece a la cuadrilla
+            {
+                if ((crate.Trip.CarriedWeight + crate.WeightInParcel) < crate.Trip.Truck.MaximunWeight)    // La caja no sobrepasa la MMA
                 {
-                    if ((crate.Trip.CarriedWeight + crate.WeightInParcel) < crate.Trip.Truck.MaximunWeight)    // La caja no sobrepasa la MMA
-                    {
-                        dal.Insert<Crate>(crate);
-                        dal.Commit();
-                    }
-                    else { throw new ServiceException("The crate:" + crate.Id + "surpass truck's MMA."); }
+                    dal.Insert<Crate>(crate);
+                    dal.Commit();
                 }
-                else { throw new ServiceException("The person:" + crate.Contract.Hired.Name + " is not a part of the group."); }
+                else { throw new ServiceException("The crate:" + crate.Id + "surpass truck's MMA."); }
             }
-            else { throw new ServiceException("Crate whit Id " + crate.Id + " already exists."); }
-         }
+            else { throw new ServiceException("The person:" + crate.Contract.Hired.Name + " is not a part of the group."); }
+        }
 
         public List<Crate> GetAllCrates()
         {
