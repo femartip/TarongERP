@@ -8,12 +8,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using TarongISW.Entities;
+using TarongISW.Services;
 
 namespace TarongISW.Presentation
 {
     public partial class AssignTripToTruckForm : TarongISWFormBase
     {
-        public AssignTripToTruckForm() : base()
+        
+        public AssignTripToTruckForm(ITarongISWService service) : base(service)
         {
             InitializeComponent();
         }

@@ -89,20 +89,21 @@ namespace TarongISW.Services
 
         public void AddGroup(Group group)
         {
-            if (dal.GetWhere<Group>(x => x.Parcel.CadastralReference == group.Parcel.CadastralReference).Any())
+            if (dal.GetById<Group>(group.Id) == null)
             {
-                if (!dal.GetWhere<Group>(x => x.Date == group.Date).Any())
+                foreach (Group gru in GetAllGroups())
                 {
-                    dal.Insert<Group>(group);
-                    dal.Commit();
+                    if (gru.Date == group.Date && gru.Parcel == group.Parcel)
+                    {
+                        throw new ServiceException("There can not be 2 groups in the same day asigned to the same parcel.");
+                    }
+
+                    ICollection<Contract> aux = gru.Members;
                 }
-                else throw new ServiceException("A group is already assigned on date: " + group.Date + " on the parcel: " + group.Parcel.CadastralReference);
-            }
-            else
-            {
                 dal.Insert<Group>(group);
                 dal.Commit();
             }
+            else throw new ServiceException("Group with Id " + group.Id + " already exists.");
         }
         #endregion
 

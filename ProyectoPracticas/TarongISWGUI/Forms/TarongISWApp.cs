@@ -22,6 +22,7 @@ namespace TarongISW.Presentation
 
         private AddCrateToTripForm addCrateToTripForm;
 
+        private AssignTripToTruckForm assignTripToTruckForm;
         public TarongISWApp(ITarongISWService service) : base(service)
         {
             InitializeComponent();
@@ -30,6 +31,7 @@ namespace TarongISW.Presentation
             newPersonForm = new NewPersonForm(service);
             getTruckTripsForm = new GetTruckTripsForm(service);
             addCrateToTripForm = new AddCrateToTripForm(service);
+            assignTripToTruckForm = new AssignTripToTruckForm(service);
         }
 
         private void exitButton(object sender, EventArgs e)
@@ -162,5 +164,10 @@ namespace TarongISW.Presentation
             c3 = new Crate(parcel.Product, 25.5, contract, g, trip);
             service.AddCrate(c3);*/
         }
+
+        private void goAssignTripToTruck(object sender, EventArgs e)
+        {
+            assignTripToTruckForm.ShowDialog();
         }
+    }
 }
