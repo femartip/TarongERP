@@ -27,7 +27,7 @@ namespace TarongISW.Entities
             Groups = new List<Group>();
         }
 
-        internal bool Active()
+        public bool Active()
         {
             if (this is Permanent) return true;
             else {

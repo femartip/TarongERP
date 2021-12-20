@@ -21,7 +21,7 @@ namespace TarongISW.Presentation
         private void carga(object sender, EventArgs e)
         {
             Miembros_listBox.MultiColumn = true;
-            Miembros_listBox.Items.AddRange(service.GetAllContracts().ToArray());
+            Miembros_listBox.Items.AddRange((ListBox.ObjectCollection)service.GetAllContracts().Where(x => x.Active()));
         }
     }
 }
