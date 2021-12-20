@@ -31,31 +31,25 @@ namespace TarongISW.Services
         #region Alta contrato de trabajador 
         public List<Contract> GetAllContracts()
         {
-            return dal.GetAll<Contract>().ToList();
+            return new List<Contract>(dal.GetAll<Contract>());
         }
         public void AddPermanent(Permanent perm)    //Caso de Uso 1
-        {   
-            if (perm.Hired.LastActiveContract() != null)
-            {
-                throw new ServiceException(perm.Id + " already has an active contract");
-            }
-            else
+        {
+            if (dal.GetById<Permanent>(perm.Id) == null)
             {
                 dal.Insert<Permanent>(perm);
                 dal.Commit();
             }
+            else throw new ServiceException("Contract " + perm.Id + " already exists.");
         }
         public void AddTemporary(Temporary temp)
         {
-            if (temp.Hired.LastActiveContract() != null)
-            {
-                throw new ServiceException(temp.Id + " already has an active contract");
-            }
-            else
+            if (dal.GetById<Temporary>(temp.Id) == null)
             {
                 dal.Insert<Temporary>(temp);
                 dal.Commit();
             }
+            else throw new ServiceException("Contract " + temp.Id + " already exists.");
         }
         #endregion
 
@@ -80,64 +74,82 @@ namespace TarongISW.Services
         #region Alta cuadrilla
         public Parcel FindParcelById(string cadas) //Caso uso 3
         {
-            return dal.GetById<Parcel>(cadas);
+            try
+            {
+                return dal.GetById<Parcel>(cadas);
+            }
+            catch (ServiceException e)
+            {
+                throw new ServiceException("Parcel con id: " + cadas + "no existe en la BD");
+            }
         }
 
         public void AddGroup(Group group)
         {
-            if (group.Members.Except(dal.GetWhere<Contract>(x => x.Groups.Any(y => y.Date == group.Date))).Count() == group.Members.Count()) {
-                throw new ServiceException("A member already exists on that date.");
-            }
-            else if (dal.GetWhere<Group>(x => x.Parcel.CadastralReference == group.Parcel.CadastralReference).Any())
+            if (dal.GetById<Group>(group.Id) == null)
             {
-                if (!dal.GetWhere<Group>(x => x.Date == group.Date).Any())
+                foreach (Group gru in GetAllGroups())
                 {
-                    dal.Insert<Group>(group);
-                    dal.Commit();
+                    if (gru.Date == group.Date && gru.Parcel == group.Parcel)
+                    {
+                        throw new ServiceException("No pueden haber en el mismo día y la misma parcela 2 cuadrillas.");
+                    }
+
+                    ICollection<Contract> aux = gru.Members;
                 }
-                else throw new ServiceException("A group is already assigned on date: " + group.Date + " on the parcel: " + group.Parcel.CadastralReference);
-            }
-            else
-            {
                 dal.Insert<Group>(group);
                 dal.Commit();
             }
+            else throw new ServiceException("Group con Id " + group.Id + " already exists.");
         }
         #endregion
 
         #region Asignar viaje a camión
         public Truck FindTruckById(string id) //Caso de uso 4
         {
-            if (dal.GetById<Truck>(id) != null)
+            try
             {
-                throw new ServiceException("A truck with id: " + id + " does not exist.");
+                return dal.GetById<Truck>(id);
             }
-            else { return dal.GetById<Truck>(id); }
+            catch (ServiceException e)
+            {
+                throw new ServiceException("Truck con id: " + id + "no existe en la BD");
+            }
         }
         public List<Trip> GetAllTrips()
         {
-            return dal.GetAll<Trip>().ToList();
+            return new List<Trip>(dal.GetAll<Trip>());
         }
         #endregion
 
         #region Añadir cajón a viaje
-        public void AddCrate(Crate crate) //Caso de uso 5
+        public void AddCrate(Crate crate)
         {
-            if (crate.Group.Members.Contains<Contract>(crate.Contract)) // Ese miembro pertenece a la cuadrilla
+            if (dal.GetById<Crate>(crate.Id) == null)
             {
-                if ((crate.Trip.CarriedWeight + crate.WeightInParcel) < crate.Trip.Truck.MaximunWeight)    // La caja no sobrepasa la MMA
+                Person p = crate.Contract.Hired;
+                if (p.LastActiveContract().Groups.Contains(crate.Group))
                 {
-                    dal.Insert<Crate>(crate);
-                    dal.Commit();
+
+
+                    if (!(crate.Trip.CarriedWeight + crate.WeightInParcel > crate.Trip.Truck.MaximunWeight))
+                    {
+                        crate.Trip.CarriedWeight += crate.WeightInParcel;
+                        dal.Insert<Crate>(crate);
+                        dal.Commit();
+
+                    }
+                    else throw new ServiceException("This crate exceeds total weight");
+
                 }
-                else { throw new ServiceException("The crate:" + crate.Id + "surpass truck's MMA."); }
+                else throw new ServiceException("This crate and Person with Id " + crate.Contract.Hired.Id + " its not in the group.");
             }
-            else { throw new ServiceException("The person:" + crate.Contract.Hired.Name + " is not a part of the group."); }
+            else throw new ServiceException("Crate whit Id " + crate.Id + " already exists.");
         }
 
         public List<Crate> GetAllCrates()
         {
-            return dal.GetAll<Crate>().ToList();
+            return new List<Crate>(dal.GetAll<Crate>());
         }
         #endregion
 
@@ -170,7 +182,7 @@ namespace TarongISW.Services
         
         public List<Truck> GetAllTrucks()
         {
-            return dal.GetAll<Truck>().ToList(); 
+            return new List<Truck>(dal.GetAll<Truck>());
         }
            
         public List<Trip> GetTruckTrips(string plateNumber, DateTime startDate, DateTime endDate)
