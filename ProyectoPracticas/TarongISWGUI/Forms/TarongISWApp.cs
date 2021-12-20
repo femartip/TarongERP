@@ -53,11 +53,22 @@ namespace TarongISW.Presentation
             service.RemoveAllData();
 
             Console.WriteLine("INITIALIZATING DB...");
-
+            /*
             Person p1;
+            Permanent c;
             p1 = new Person("12345678Z", "Juan Abelló");
             service.AddPerson(p1);
+            c = new Permanent("cuentaBanco", DateTime.Today, "12345",p1,1200.0);
+            service.AddPermanent(c);
+            p1 = new Person("23456789D", "José María Aristrian");
+            service.AddPerson(p1);
+            p1 = new Person("34567890V", "Junta de Andalucía");
+            service.AddPerson(p1);
+            */
+            
+            
 
+            /*
             Parcel parcel = new Parcel("1234567AB9999C0001DE", "El Lobillo, Alhambra (Ciudad Real)", Product.Orange, 10000, p1);
             service.AddParcel(parcel);
 
@@ -133,30 +144,6 @@ namespace TarongISW.Presentation
             service.AddPermanent(perm);
 
 
-            Console.WriteLine("DATA CREATED.");
-
-            //ADD CRATES
-
-            Crate c1, c2, c3;
-            Contract contract;
-            Group g;
-
-            parcel = service.FindParcelById("7654321AB9999C0001DE");
-            g = new Group(DateTime.Today, parcel);
-            g.AddMember(service.FindPersonById("65432109F").LastActiveContract());
-            service.AddGroup(g);
-            trip = service.FindTruckById("1234AAA").LastTrip();
-            contract = service.FindPersonById("65432109F").LastActiveContract();
-            service.Commit();
-
-            c1 = new Crate(parcel.Product, 20, contract, g, trip);
-            service.AddCrate(c1);
-
-            c2 = new Crate(parcel.Product, 30, contract, g, trip);
-            service.AddCrate(c2);
-
-            c3 = new Crate(parcel.Product, 25.5, contract, g, trip);
-            service.AddCrate(c3);
         }
     }
 }
