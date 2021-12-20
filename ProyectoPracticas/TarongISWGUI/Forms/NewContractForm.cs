@@ -57,32 +57,42 @@ namespace TarongISW.Presentation
 
         private void addButtonTemp_Click(object sender, EventArgs e)
         {
-                if (fieldsOKTemp())
+            double result;
+            if (fieldsOKTemp())
+            {
+                Person p = service.FindPersonById(textBoxDNI.Text);
+                Temporary temp = new Temporary(textBoxBankAccount.Text, dateTimePickerInitDate.Value, textBoxSSN.Text, p);
+                temp.FinalDate = dateTimePickerFinalDate.Value;
+                try
                 {
-                    if (service.FindPersonById(textBoxDNI.Text) == null)
-                    {
-                        MessageBox.Show("Person with this DNI doesn not exists", "Error");
-                        //Call Alta Persona 
-                    }
-                    else
-                    {
-                        Person p = service.FindPersonById(textBoxDNI.Text);
-                        Temporary temp = new Temporary(textBoxBankAccount.Text, dateTimePickerInitDate.Value, textBoxSSN.Text, p);
-                        temp.FinalDate = dateTimePickerFinalDate.Value;
-                        try
-                        {
-                            service.AddTemporary(temp);
-                        }
-                        catch (Exception error)
-                        {
-                            MessageBox.Show(error.ToString(), "Error");
-                        }
-                    }
+                    service.AddTemporary(temp);
+                    this.Close();   
                 }
-                else
+                catch (Exception error)
                 {
-                    MessageBox.Show("Missing information", "Error");
+                    MessageBox.Show(error.ToString(), "Error");
                 }
+
+            }
+            else if (fieldsOKPerm() && double.TryParse(textBoxSalary.Text, out result)) {
+                Person p = service.FindPersonById(textBoxDNI.Text);
+                Permanent perm = new Permanent(textBoxBankAccount.Text, dateTimePickerInitDate.Value, textBoxSSN.Text, p, double.Parse(textBoxSalary.Text));
+                
+                try
+                {
+                    service.AddPermanent(perm);
+                    this.Close();   
+                }
+                catch (Exception error)
+                {
+                    MessageBox.Show(error.ToString(), "Error");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Missing information", "Error");
+            }
+            
             }
 
         
@@ -99,33 +109,28 @@ namespace TarongISW.Presentation
                 service.FindPersonById(textBoxDNI.Text);
                 DNIOk();
             } catch (Exception error) {
-                MessageBox.Show("DNI does not exists", "Error");
+                MessageBox.Show("Person does not exists", "Error");
             }
         }
 
         private void isTemporary(object sender, EventArgs e)
         {
-            if (temp.Checked.Equals(true))
-            {
-                addButtonTemp.Enabled = true;
-                
-            }
-            else {
-                dateTimePickerFinalDate.Enabled = false;
-            }
+            addButtonTemp.Enabled = true;
+            
+                dateTimePickerFinalDate.Enabled = true;
+            
+                textBoxSalary.Enabled = false;
+            
         }
 
         private void isPermanent(object sender, EventArgs e)
         {
-            if (perm.Checked.Equals(true))
-            {
-                addButtonTemp.Enabled = true;
+            addButtonTemp.Enabled = true;
+            
                 textBoxSalary.Enabled = true;
-            }
-            else
-            {
+            
                 dateTimePickerFinalDate.Enabled = false;
-            }
+            
         }
     }
     

@@ -186,7 +186,7 @@ namespace TarongISW.Presentation
             this.temp.TabStop = true;
             this.temp.Text = "Temporary";
             this.temp.UseVisualStyleBackColor = true;
-            this.temp.Click += new System.EventHandler(this.isTemporary);
+            this.temp.CheckedChanged += new System.EventHandler(this.isTemporary);
             // 
             // perm
             // 
@@ -198,7 +198,7 @@ namespace TarongISW.Presentation
             this.perm.TabStop = true;
             this.perm.Text = "Permanent";
             this.perm.UseVisualStyleBackColor = true;
-            this.perm.Click += new System.EventHandler(this.isPermanent);
+            this.perm.CheckedChanged += new System.EventHandler(this.isPermanent);
             // 
             // buttonParcel
             // 

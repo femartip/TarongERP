@@ -95,18 +95,25 @@ namespace TarongISW.Presentation
 
         private void validDNI(object sender, EventArgs e)
         {
-            if (service.FindPersonById(textBoxDNI.Text) == null)
+
+            try
+            {
+                Person p = service.FindPersonById(textBoxDNI.Text);
+                if (p.LastActiveContract() != null && p.LastActiveContract().Groups.Contains(service.FindParcelById(textBoxParcel.Text).LastGroup()))
+                {
+                    textBoxPN.Enabled = true;
+                    buttonPN.Enabled = true;
+                }
+                else
+                {
+                    MessageBox.Show("Person not asigned to any parcel", "Error");
+                }
+            }
+            catch (Exception error)
             {
                 MessageBox.Show("Person does not exists", "Error");
             }
-            else if (!service.FindPersonById(textBoxDNI.Text).LastActiveContract().Groups.Contains(service.FindParcelById(textBoxDNI.Text).LastGroup())) {
-                MessageBox.Show("Person not asigned to anu parcel", "Error");
-            } 
-            else
-            {
-                textBoxPN.Enabled = true;
-                buttonPN.Enabled = true;
-            }
+           
         }
 
         private void validPN(object sender, EventArgs e)
