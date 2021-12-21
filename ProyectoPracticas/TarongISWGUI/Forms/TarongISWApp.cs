@@ -16,7 +16,7 @@ namespace TarongISW.Presentation
     {
         private AddCrateToTripForm newAddCrateToTripForm;
         private AssignTripToTruckForm newAssignTripToTruckForm;
-        private NewContractFrom newContractFrom;
+        private NewContractForm newContractFrom;
         private NewGroupForm newGroupForm;
 
         public TarongISWApp(ITarongISWService service) : base(service)
@@ -25,8 +25,9 @@ namespace TarongISW.Presentation
             this.service = service;
             //DBInitialization();
             newAddCrateToTripForm = new AddCrateToTripForm(service);
+            DBInitialization();
             newAssignTripToTruckForm = new AssignTripToTruckForm(service);
-            newContractFrom = new NewContractFrom(service);
+            newContractFrom = new NewContractForm(service);
             newGroupForm = new NewGroupForm(service);
         }
 
@@ -62,22 +63,7 @@ namespace TarongISW.Presentation
             Console.WriteLine("INITIALIZATING DB...");
 
             Person p1;
-            Permanent c;
-            p1 = new Person("12345678Z", "Juan Abelló");
-            service.AddPerson(p1);
-            c = new Permanent("cuentaBanco", DateTime.Today, "12345", p1, 1200.0);
-            service.AddPermanent(c);
-            p1 = new Person("23456789D", "José María Aristrian");
-            service.AddPerson(p1);
-            p1 = new Person("34567890V", "Junta de Andalucía");
-            service.AddPerson(p1);
-
-
-
-
-
-            Parcel parcel = new Parcel("1234567AB9999C0001DE", "El Lobillo, Alhambra (Ciudad Real)", Product.Orange, 10000, p1);
-            service.AddParcel(parcel);
+            Parcel parcel;
 
             p1 = new Person("23456789D", "José María Aristrian");
             service.AddPerson(p1);
@@ -99,6 +85,7 @@ namespace TarongISW.Presentation
 
             t = new Truck("1234LKP", 18000, 3660);
             service.AddTruck(t);
+
         }
 
         

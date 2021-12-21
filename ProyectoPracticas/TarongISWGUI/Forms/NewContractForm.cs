@@ -8,55 +8,107 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using TarongISW.Entities;
+using TarongISW.Services;
 
 namespace TarongISW.Presentation
 {
-    public partial class NewContractFrom : TarongISWFormBase
+    public partial class NewContractForm : TarongISWFormBase
     {
-        public NewContractFrom() : base()
+        private NewPersonForm newPersonForm;
+        public NewContractForm(ITarongISWService service) : base(service)
         {
             InitializeComponent();
+            //newPersonFormTemp = new NewPersonForm(this, service);
+            newPersonForm = new NewPersonForm(service);
         }
 
-        protected virtual bool fieldsOK()
+        protected virtual bool fieldsOKTemp()
         {
             return
                 !string.IsNullOrEmpty(textBoxDNI.Text) &&
                 !string.IsNullOrEmpty(textBoxBankAccount.Text) &&
-                !string.IsNullOrEmpty(textBoxSNN.Text);
+                !string.IsNullOrEmpty(textBoxSSN.Text);
         }
 
-        private void addButton_Click(object sender, EventArgs e)
+        protected virtual bool fieldsOKPerm()
         {
-            if (fieldsOK())
+            return
+                !string.IsNullOrEmpty(textBoxDNI2.Text) &&
+                !string.IsNullOrEmpty(textBoxBankAccount2.Text) &&
+                !string.IsNullOrEmpty(textBoxSSN2.Text) &&
+                !string.IsNullOrEmpty(textBoxSalary.Text);
+        }
+
+        private void addButtonTemp_Click(object sender, EventArgs e)
+        {
+            if (fieldsOKTemp())
             {
                 if (service.FindPersonById(textBoxDNI.Text) == null)
                 {
                     MessageBox.Show("Person with this DNI doesn not exists", "Error");
                     //Call Alta Persona 
                 }
-                else {
+                else
+                {
                     Person p = service.FindPersonById(textBoxDNI.Text);
-                    Contract c = new Contract(textBoxBankAccount.Text, dateTimePickerInitDate.Value, textBoxSNN.Text, p);
-                    if (comboBoxHired.Text == "Permanent")
+                    Temporary temp = new Temporary(textBoxBankAccount.Text, dateTimePickerInitDate.Value, textBoxSSN.Text, p, dateTimePickerFinalDate.Value);
+                    try
                     {
-                        //Intentas añadir el contrato
+                        service.AddTemporary(temp);
+                        MessageBox.Show("Persona añadida con exito");
                     }
-                    else if (comboBoxHired.Text == "Temporary")
+                    catch (Exception error)
                     {
-                        //Intentas añadir el contrato
-                    }
-                    else {
-                        MessageBox.Show("Value of Hired not aceptable", "Error");
+                        MessageBox.Show(error.ToString(), "Error");
                     }
                 }
-
             }
-            else {
-                MessageBox.Show("Missing information","Error");
+            else
+            {
+                MessageBox.Show("Missing information", "Error");
             }
         }
 
-        
+        private void addButtonPerm_Click(object sender, EventArgs e)
+        {
+            if (fieldsOKPerm())
+            {
+                double result;
+                if (service.FindPersonById(textBoxDNI2.Text) == null)
+                {
+                    MessageBox.Show("Person with this DNI doesn not exists", "Error");
+                    //Call Alta Persona 
+                }
+                if (!double.TryParse(textBoxSalary.Text, out result))
+                {
+                    MessageBox.Show("Slalary must be a number");
+                }
+                else
+                {
+                    Person p = service.FindPersonById(textBoxDNI2.Text);
+                    Permanent perm = new Permanent(textBoxBankAccount2.Text, dateTimePickerInitDate2.Value, textBoxSSN2.Text, p, double.Parse(textBoxSalary.Text));
+                    try
+                    {
+                        service.AddPermanent(perm);
+                        this.Close();
+                    }
+                    catch (Exception error)
+                    {
+                        MessageBox.Show(error.ToString(), "Error");
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Missing information", "Error");
+            }
+        }
+
+        private void goAddPerson_Click(object sender, EventArgs e)
+        {
+            //newPersonForm.Clear();
+            newPersonForm.ShowDialog();
+        }
     }
+
 }

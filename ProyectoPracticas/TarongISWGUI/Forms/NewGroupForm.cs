@@ -14,11 +14,11 @@ namespace TarongISW.Presentation
 {
     public partial class NewGroupForm : TarongISWFormBase
     {
-        private NewContractFrom newContractForm;
+        private NewContractForm newContractForm;
         public NewGroupForm(ITarongISWService service) : base(service)
         {
             InitializeComponent();
-            newContractForm = new NewContractFrom(service);
+            newContractForm = new NewContractForm(service);
         }
 
         private void NewGroupForm_Load(object sender, EventArgs e)
@@ -27,7 +27,7 @@ namespace TarongISW.Presentation
             ICollection<Contract> contracts = service.GetAllContracts();
             if (contracts != null)
                 foreach (Contract c in contracts)
-                    if(c.Active()) Members_ListBox.Items.Add(c.Hired.Id);
+                    if(c.Active()) Members_ListBox.Items.Add(c.Hired.Name + ", " + c.Hired.Id);
         }
 
         private void Parcel_textBox_TextChanged(object sender, EventArgs e)
@@ -40,7 +40,7 @@ namespace TarongISW.Presentation
             Parcel parcel = service.FindParcelById(Parcel_textBox.Text);
             if (parcel != null)
             {
-                if (service.GetAllGroups().Where<Group>(x => x.Parcel == parcel) != null)
+                if (parcel.ActiveGroup())
                 {
                     MessageBox.Show(this, "Esta parcela ya tiene un grupo para este dia", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
@@ -91,6 +91,7 @@ namespace TarongISW.Presentation
             catch (Exception e)
             {
                 MessageBox.Show(this, e.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.Close();
             }
 
         }

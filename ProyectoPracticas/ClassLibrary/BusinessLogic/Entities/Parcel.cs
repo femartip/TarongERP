@@ -25,7 +25,14 @@ namespace TarongISW.Entities
         }
         public Group LastGroup()
         {
-            return Groups.Last<Group>();
+            if (Groups.Count > 0) return Groups.Last<Group>();
+            else return null;
+        }
+
+        public Boolean ActiveGroup()
+        {
+            if (LastGroup() == null) return false;
+            else return this.LastGroup().Date == DateTime.Today;
         }
     }
 }
