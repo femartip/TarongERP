@@ -14,6 +14,7 @@ namespace TarongISW.Presentation
 {
     public partial class TarongISWApp : TarongISWFormBase
     {
+        private AddCrateToTripForm newAddCrateToTripForm;
         private AssignTripToTruckForm newAssignTripToTruckForm;
         private NewContractFrom newContractFrom;
         private NewGroupForm newGroupForm;
@@ -23,6 +24,7 @@ namespace TarongISW.Presentation
             InitializeComponent();
             this.service = service;
             //DBInitialization();
+            newAddCrateToTripForm = new AddCrateToTripForm(service);
             newAssignTripToTruckForm = new AssignTripToTruckForm(service);
             newContractFrom = new NewContractFrom(service);
             newGroupForm = new NewGroupForm(service);
@@ -41,6 +43,16 @@ namespace TarongISW.Presentation
         private void goNewGroupForm(object sender, EventArgs e)
         {
             newGroupForm.ShowDialog();
+        }
+
+        private void goToAssignTripToTruckForm(object sender, EventArgs e)
+        {
+            newAssignTripToTruckForm.ShowDialog();
+        }
+
+        private void goToAddCrateToTrip(object sender, EventArgs e)
+        {
+            newAddCrateToTripForm.ShowDialog(); 
         }
 
         void DBInitialization()
@@ -89,9 +101,6 @@ namespace TarongISW.Presentation
             service.AddTruck(t);
         }
 
-        private void goToAssignTripToTruckForm(object sender, EventArgs e)
-        {
-            newAssignTripToTruckForm.ShowDialog();
-        }
+        
     }
 }
