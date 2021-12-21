@@ -28,15 +28,22 @@ namespace TarongISW.Presentation
         }
         private void volverMenu(object sender, EventArgs e)
         {
-            Application.Exit();
+            this.Close();
         }
         private void valorMatriculaModificado(object sender, KeyPressEventArgs e)
         {
             if (textBoxMatricula.Text.Length == 7)
             {
+                label2.Enabled = true; label3.Enabled = true;
                 dateTimePickerSalida.Enabled = true;
                 dateTimePicker2.Enabled = true;
             }
+            else { 
+                label2.Enabled = false; label3.Enabled = false;
+                dateTimePickerSalida.Enabled = false;
+                dateTimePicker2.Enabled = false;
+            }
+
             if (fieldsOK) { buttonAñadir.Enabled = true; }
             else { buttonAñadir.Enabled = false; }
         }
@@ -62,7 +69,10 @@ namespace TarongISW.Presentation
                     tr.ParcelExit = dateTimePickerSalida.Value;
                     tr.CoopArrival = dateTimePicker2.Value;
                     t.AddTrip(tr);
-                    MessageBox.Show("Trip added to truck.", "Success");
+                    service.Commit();   
+                    MessageBox.Show("Trip added to truck.", "Mensaje");
+                    textBoxMatricula.Clear();
+                    this.Close();
                 }
                 else if (dateTimePickerSalida.Value == null)
                 {

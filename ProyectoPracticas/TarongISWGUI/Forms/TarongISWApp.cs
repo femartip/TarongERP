@@ -48,22 +48,22 @@ namespace TarongISW.Presentation
             service.RemoveAllData();
 
             Console.WriteLine("INITIALIZATING DB...");
-            
+
             Person p1;
             Permanent c;
             p1 = new Person("12345678Z", "Juan Abelló");
             service.AddPerson(p1);
-            c = new Permanent("cuentaBanco", DateTime.Today, "12345",p1,1200.0);
+            c = new Permanent("cuentaBanco", DateTime.Today, "12345", p1, 1200.0);
             service.AddPermanent(c);
             p1 = new Person("23456789D", "José María Aristrian");
             service.AddPerson(p1);
             p1 = new Person("34567890V", "Junta de Andalucía");
             service.AddPerson(p1);
-            
-            
-            
 
-            
+
+
+
+
             Parcel parcel = new Parcel("1234567AB9999C0001DE", "El Lobillo, Alhambra (Ciudad Real)", Product.Orange, 10000, p1);
             service.AddParcel(parcel);
 
@@ -87,9 +87,9 @@ namespace TarongISW.Presentation
 
             t = new Truck("1234LKP", 18000, 3660);
             service.AddTruck(t);
-            
+        }
 
-        private void goToNewAssignTripToTruckForm(object sender, EventArgs e)
+        private void goToAssignTripToTruckForm(object sender, EventArgs e)
         {
             newAssignTripToTruckForm.ShowDialog();
         }
