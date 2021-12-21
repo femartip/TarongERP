@@ -53,7 +53,7 @@ namespace TarongISW.Presentation
             service.RemoveAllData();
 
             Console.WriteLine("INITIALIZATING DB...");
-            /*
+            
             Person p1;
             Permanent c;
             p1 = new Person("12345678Z", "Juan Abelló");
@@ -64,11 +64,11 @@ namespace TarongISW.Presentation
             service.AddPerson(p1);
             p1 = new Person("34567890V", "Junta de Andalucía");
             service.AddPerson(p1);
-            */
+            
             
             
 
-            /*
+            
             Parcel parcel = new Parcel("1234567AB9999C0001DE", "El Lobillo, Alhambra (Ciudad Real)", Product.Orange, 10000, p1);
             service.AddParcel(parcel);
 
