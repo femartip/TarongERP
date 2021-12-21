@@ -56,29 +56,35 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\AddCrateToTripForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AddCrateToTripForm.Designer.cs">
+      <DependentUpon>AddCrateToTripForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\AssignTripToTruck.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\AssignTripToTruck.Designer.cs">
       <DependentUpon>AssignTripToTruck.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\ViajesCamion.cs">
+    <Compile Include="Forms\GetTruckTrips.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\ViajesCamion.Designer.cs">
-      <DependentUpon>ViajesCamion.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\NewGroupForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\NewGroupForm.Designer.cs">
-      <DependentUpon>NewGroupForm.cs</DependentUpon>
+    <Compile Include="Forms\GetTruckTrips.Designer.cs">
+      <DependentUpon>GetTruckTrips.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\NewContractForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\NewContractForm.Designer.cs">
       <DependentUpon>NewContractForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\NewGroupForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\NewGroupForm.Designer.cs">
+      <DependentUpon>NewGroupForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\NewPersonForm.cs">
       <SubType>Form</SubType>
@@ -100,14 +106,17 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Forms\AddCrateToTripForm.resx">
+      <DependentUpon>AddCrateToTripForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\GetTruckTrips.resx">
+      <DependentUpon>GetTruckTrips.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\NewGroupForm.resx">
       <DependentUpon>NewGroupForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\TarongISWApp.resx">
       <DependentUpon>TarongISWApp.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\ViajesCamion.resx">
-      <DependentUpon>ViajesCamion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
