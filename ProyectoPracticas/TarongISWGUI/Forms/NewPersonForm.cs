@@ -14,7 +14,7 @@ namespace TarongISW.Presentation
 {
     public partial class NewPersonForm : TarongISWFormBase
     {
-        public NewPersonForm() : base()
+        public NewPersonForm(ITarongISWService service) : base(service)
         {
             InitializeComponent();
         }

@@ -35,6 +35,7 @@ namespace TarongISW.Presentation
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
+            this.TruckTrip_button = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -97,11 +98,22 @@ namespace TarongISW.Presentation
             this.button6.UseVisualStyleBackColor = true;
             this.button6.Click += new System.EventHandler(this.goToNewPersonForm);
             // 
+            // TruckTrip_button
+            // 
+            this.TruckTrip_button.Location = new System.Drawing.Point(287, 282);
+            this.TruckTrip_button.Name = "TruckTrip_button";
+            this.TruckTrip_button.Size = new System.Drawing.Size(143, 66);
+            this.TruckTrip_button.TabIndex = 6;
+            this.TruckTrip_button.Text = "Get Truck Trips";
+            this.TruckTrip_button.UseVisualStyleBackColor = true;
+            this.TruckTrip_button.Click += new System.EventHandler(this.goToGetTruckTrips);
+            // 
             // TarongISWApp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.TruckTrip_button);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
@@ -122,5 +134,6 @@ namespace TarongISW.Presentation
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button TruckTrip_button;
     }
 }

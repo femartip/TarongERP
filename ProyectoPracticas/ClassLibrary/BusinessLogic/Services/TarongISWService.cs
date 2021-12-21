@@ -191,7 +191,7 @@ namespace TarongISW.Services
             {
                 throw new ServiceException("Truck not exists");
             }
-            if (endDate.CompareTo(startDate) > 0) 
+            if (startDate > endDate) 
             {
                 throw new ServiceException("Invalid dates");
             }

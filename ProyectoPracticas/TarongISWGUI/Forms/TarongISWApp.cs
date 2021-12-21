@@ -19,6 +19,7 @@ namespace TarongISW.Presentation
         private NewContractForm newContractFrom;
         private NewGroupForm newGroupForm;
         private NewPersonForm newPersonForm;
+        private GetTruckTrips getTruckTrips;
 
         public TarongISWApp(ITarongISWService service) : base(service)
         {
@@ -31,6 +32,7 @@ namespace TarongISW.Presentation
             newContractFrom = new NewContractForm(service);
             newGroupForm = new NewGroupForm(service);
             newPersonForm = new NewPersonForm(service);
+            getTruckTrips = new GetTruckTrips(service);
         }
 
         private void exitButton(object sender, EventArgs e)
@@ -88,11 +90,31 @@ namespace TarongISW.Presentation
             t = new Truck("1234LKP", 18000, 3660);
             service.AddTruck(t);
 
+            t = service.FindTruckById("1234BJP");
+            Trip trip = new Trip(t);
+            t.AddTrip(trip);
+            service.Commit();
+
+            t = service.FindTruckById("1234BJP");
+            trip = new Trip(t);
+            t.AddTrip(trip);
+            service.Commit();
+
+            t = service.FindTruckById("1234AAA");
+            trip = new Trip(t);
+            t.AddTrip(trip);
+            service.Commit();
+
         }
 
         private void goToNewPersonForm(object sender, EventArgs e)
         {
             newPersonForm.ShowDialog();
+        }
+
+        private void goToGetTruckTrips(object sender, EventArgs e)
+        {
+            getTruckTrips.ShowDialog();
         }
     }
 }

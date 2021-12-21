@@ -8,14 +8,8 @@ namespace TarongISW.Presentation
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        private ITarongISWService service;
 
 
-        public NewPersonForm(ITarongISWService service)
-        {
-            InitializeComponent();
-            this.service = service;
-        }
 
         /// <summary>
         /// Clean up any resources being used.
