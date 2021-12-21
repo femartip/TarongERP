@@ -18,6 +18,7 @@ namespace TarongISW.Presentation
         private AssignTripToTruckForm newAssignTripToTruckForm;
         private NewContractForm newContractFrom;
         private NewGroupForm newGroupForm;
+        private NewPersonForm newPersonForm;
 
         public TarongISWApp(ITarongISWService service) : base(service)
         {
@@ -29,6 +30,7 @@ namespace TarongISW.Presentation
             newAssignTripToTruckForm = new AssignTripToTruckForm(service);
             newContractFrom = new NewContractForm(service);
             newGroupForm = new NewGroupForm(service);
+            newPersonForm = new NewPersonForm(service);
         }
 
         private void exitButton(object sender, EventArgs e)
@@ -88,6 +90,9 @@ namespace TarongISW.Presentation
 
         }
 
-        
+        private void goToNewPersonForm(object sender, EventArgs e)
+        {
+            newPersonForm.ShowDialog();
+        }
     }
 }

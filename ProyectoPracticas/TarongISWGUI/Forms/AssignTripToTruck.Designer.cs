@@ -42,7 +42,7 @@
             this.textBoxMatricula.Name = "textBoxMatricula";
             this.textBoxMatricula.Size = new System.Drawing.Size(234, 22);
             this.textBoxMatricula.TabIndex = 0;
-            this.textBoxMatricula.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.valorMatriculaModificado);
+            this.textBoxMatricula.TextChanged += new System.EventHandler(this.valorMatriculaModificado);
             // 
             // label1
             // 
@@ -50,7 +50,7 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(23, 25);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(74, 16);
+            this.label1.Size = new System.Drawing.Size(63, 13);
             this.label1.TabIndex = 1;
             this.label1.Text = "Matricula:";
             // 
@@ -70,7 +70,7 @@
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(13, 84);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(101, 16);
+            this.label2.Size = new System.Drawing.Size(83, 13);
             this.label2.TabIndex = 3;
             this.label2.Text = "Fecha salida:";
             // 
@@ -90,7 +90,7 @@
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(13, 135);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(111, 16);
+            this.label3.Size = new System.Drawing.Size(91, 13);
             this.label3.TabIndex = 5;
             this.label3.Text = "Fecha llegada:";
             // 
@@ -133,6 +133,7 @@
             this.Load += new System.EventHandler(this.AssignTripToTruckForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
+
         }
         #endregion
         private System.Windows.Forms.TextBox textBoxMatricula;

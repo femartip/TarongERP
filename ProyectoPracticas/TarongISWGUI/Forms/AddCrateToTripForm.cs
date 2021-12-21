@@ -102,7 +102,7 @@ namespace TarongISW.Presentation
             }
             else if (!service.FindPersonById(textBoxDNI.Text).LastActiveContract().Groups.Contains(service.FindParcelById(textBoxDNI.Text).LastGroup()))
             {
-                MessageBox.Show("Person not asigned to anu parcel", "Error");
+                MessageBox.Show("Person not asigned to any parcel", "Error");
             }
             else
             {

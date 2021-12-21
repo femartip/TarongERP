@@ -92,7 +92,7 @@ namespace TarongISW.Services
                 {
                     if (gru.Date == group.Date && gru.Parcel == group.Parcel)
                     {
-                        throw new ServiceException("No pueden haber en el mismo día y la misma parcela 2 cuadrillas.");
+                        throw new ServiceException("2 groups cant work the same day at the same parcel");
                     }
 
                     ICollection<Contract> aux = gru.Members;
@@ -113,7 +113,7 @@ namespace TarongISW.Services
             }
             catch (ServiceException e)
             {
-                throw new ServiceException("Truck con id: " + id + "no existe en la BD");
+                throw new ServiceException("Tuck: " + id + "does not exists");
             }
         }
         public List<Trip> GetAllTrips()

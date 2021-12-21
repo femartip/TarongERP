@@ -55,11 +55,12 @@ namespace TarongISW.Presentation
                     try
                     {
                         service.AddTemporary(temp);
-                        MessageBox.Show("Persona añadida con exito");
+                        MessageBox.Show("Person sucessfully added");
+                        this.Close();
                     }
                     catch (Exception error)
                     {
-                        MessageBox.Show(error.ToString(), "Error");
+                        MessageBox.Show(error.Message);
                     }
                 }
             }
@@ -90,6 +91,7 @@ namespace TarongISW.Presentation
                     try
                     {
                         service.AddPermanent(perm);
+                        MessageBox.Show("Person sucessfully added");
                         this.Close();
                     }
                     catch (Exception error)
@@ -108,6 +110,11 @@ namespace TarongISW.Presentation
         {
             //newPersonForm.Clear();
             newPersonForm.ShowDialog();
+        }
+
+        private void NewContractForm_Load(object sender, EventArgs e)
+        {
+            dateTimePickerFinalDate.MinDate = DateTime.Now;
         }
     }
 

@@ -30,23 +30,6 @@ namespace TarongISW.Presentation
         {
             this.Close();
         }
-        private void valorMatriculaModificado(object sender, KeyPressEventArgs e)
-        {
-            if (textBoxMatricula.Text.Length == 7)
-            {
-                label2.Enabled = true; label3.Enabled = true;
-                dateTimePickerSalida.Enabled = true;
-                dateTimePicker2.Enabled = true;
-            }
-            else { 
-                label2.Enabled = false; label3.Enabled = false;
-                dateTimePickerSalida.Enabled = false;
-                dateTimePicker2.Enabled = false;
-            }
-
-            if (fieldsOK) { buttonAñadir.Enabled = true; }
-            else { buttonAñadir.Enabled = false; }
-        }
         private void fechaSalidaModificada(object sender, EventArgs e)
         {
             dateTimePicker2.MinDate = dateTimePickerSalida.Value;
@@ -84,6 +67,25 @@ namespace TarongISW.Presentation
                 }
             }
             else { MessageBox.Show("Truck with this Id does not exist", "Error"); }
+        }
+
+        private void valorMatriculaModificado(object sender, EventArgs e)
+        {
+            if (textBoxMatricula.Text.Length >= 7)
+            {
+                label2.Enabled = true; label3.Enabled = true;
+                dateTimePickerSalida.Enabled = true;
+                dateTimePicker2.Enabled = true;
+            }
+            else
+            {
+                label2.Enabled = false; label3.Enabled = false;
+                dateTimePickerSalida.Enabled = false;
+                dateTimePicker2.Enabled = false;
+            }
+
+            if (fieldsOK) { buttonAñadir.Enabled = true; }
+            else { buttonAñadir.Enabled = false; }
         }
     }
 }

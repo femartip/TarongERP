@@ -42,7 +42,7 @@ namespace TarongISW.Presentation
             {
                 if (parcel.ActiveGroup())
                 {
-                    MessageBox.Show(this, "Esta parcela ya tiene un grupo para este dia", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(this, "This parcil already has a group assigned", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
                 {
@@ -52,7 +52,7 @@ namespace TarongISW.Presentation
             }
             else
             {
-                MessageBox.Show(this, "El id de parcela introducido no existe", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(this, "Parcel id does not exists", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -67,7 +67,7 @@ namespace TarongISW.Presentation
             {
                 addGroup();
             }
-            else MessageBox.Show(this, "Hay campos vacios o incompletos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            else MessageBox.Show(this, "Invalid data", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private bool FieldsOk()
@@ -86,7 +86,8 @@ namespace TarongISW.Presentation
                     group.AddMember(service.FindPersonById(id).LastActiveContract());
                 }
                 service.AddGroup(group);
-                MessageBox.Show(this, "Cuadrilla creada correctamente", "Cuadrilla", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(this, "Group sucessfully created", "Group", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Close();
             }
             catch (Exception e)
             {

@@ -109,11 +109,17 @@
     <EmbeddedResource Include="Forms\AddCrateToTripForm.resx">
       <DependentUpon>AddCrateToTripForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AssignTripToTruck.resx">
+      <DependentUpon>AssignTripToTruck.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\GetTruckTrips.resx">
       <DependentUpon>GetTruckTrips.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\NewGroupForm.resx">
       <DependentUpon>NewGroupForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\NewPersonForm.resx">
+      <DependentUpon>NewPersonForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\TarongISWApp.resx">
       <DependentUpon>TarongISWApp.cs</DependentUpon>
