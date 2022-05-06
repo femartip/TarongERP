@@ -4,6 +4,7 @@ For the Persistance layer, we have used the EntityFrameworkDAL to connect the Da
 
 # Proyect
 This is an overview of some windows of the GUI, take in consideration this windows have been build with Microsoft Forms, and are designed to be functional, not beautiful. 
+
 ![ini](https://user-images.githubusercontent.com/99536660/167113331-ac95308a-190a-4141-a9f7-234c1ec0422b.png)
 ![newcontract](https://user-images.githubusercontent.com/99536660/167113346-736f64e2-8f03-40ba-b531-c70ba7c31e73.png)
 ![addcratetotrip](https://user-images.githubusercontent.com/99536660/167113355-86e038f5-c304-4b43-b47b-5a086460e4ee.png)
